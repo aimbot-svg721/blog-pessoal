@@ -1,5 +1,5 @@
 # Requires Hugo >= 0.154.5 (uses Language.Name and disableDefaultSiteRedirect)
-baseURL = "https://SEUDOMINIO.com.br/"
+baseURL = "https://aimbot-svg721.github.io/blog-pessoal/"   
 defaultContentLanguage = "pt"
 defaultContentLanguageInSubdir = true
 
