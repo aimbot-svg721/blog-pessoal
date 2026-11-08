@@ -2,7 +2,7 @@
 title = "O número que passou em cem testes"
 slug = "o-numero-que-passou-em-cem-testes"
 date = 2026-11-08
-draft = true
+draft = false
 translationKey = "numero-cem-testes"
 categories = ["teoria-dos-numeros"]
 +++

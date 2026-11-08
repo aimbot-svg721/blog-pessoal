@@ -1,6 +1,6 @@
 +++
 title = "Contato"
-draft = true
+draft = false
 translationKey = "contact"
 +++
 
