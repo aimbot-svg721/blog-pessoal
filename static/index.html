@@ -1,23 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Papel de Rascunho · Scratch Paper</title>
-  <noscript><meta http-equiv="refresh" content="0; url=/pt/"></noscript>
-  <script>
-    (function () {
-      var lang = null;
-      try { lang = localStorage.getItem('lang'); } catch (_) {}
-      if (lang !== 'pt' && lang !== 'en') {
-        var nav = (navigator.language || 'pt').toLowerCase();
-        lang = nav.indexOf('pt') === 0 ? 'pt' : 'en';
-      }
-      location.replace('/' + lang + '/');
-    })();
-  </script>
+<meta charset="utf-8">
+<script>
+const lang = localStorage.getItem('lang') || 'pt';
+window.location.replace('/' + lang + '/');
+</script>
 </head>
 <body>
-  <p><a href="/pt/">Português</a> · <a href="/en/">English</a></p>
+<meta http-equiv="refresh" content="0; url=/pt/">
 </body>
-</html>
+</html>   
