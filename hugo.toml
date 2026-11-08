@@ -1,0 +1,49 @@
+# Requires Hugo >= 0.154.5 (uses Language.Name and disableDefaultSiteRedirect)
+baseURL = "https://SEUDOMINIO.com.br/"
+defaultContentLanguage = "pt"
+defaultContentLanguageInSubdir = true
+
+# static/index.html replaces Hugo's blind root redirect (language router)
+disableDefaultSiteRedirect = true
+
+# no "all categories" page, no section list pages, no Hugo-generated 404 (static/404.html instead)
+disableKinds = ["taxonomy", "section", "404"]
+
+[taxonomies]
+  category = "categories"
+
+[permalinks]
+  # posts live at /<lang>/<slug>/ instead of /<lang>/posts/<slug>/
+  [permalinks.page]
+    posts = "/:slug/"
+  # category pages live at /<lang>/<slug>/ instead of /<lang>/categories/<slug>/
+  [permalinks.term]
+    categories = "/:slug/"
+
+[outputs]
+  term = ["html"]
+
+# KaTeX rendered at build time ($...$ and $$...$$)
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block  = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
+
+[languages.en]
+  title = "Scratch Paper"
+  weight = 1
+  contentDir = "content/en"
+  [languages.en.params]
+    hreflang = "en"
+    og_locale = "en_US"
+    description = "Essays on olympiad math problems: attempts, dead ends, and what I learned thinking out loud."
+
+[languages.pt]
+  title = "Papel de Rascunho"
+  weight = 2
+  contentDir = "content/pt"
+  [languages.pt.params]
+    hreflang = "pt-BR"
+    og_locale = "pt_BR"
+    description = "Ensaios sobre problemas de olimpíada de matemática: tentativas, becos sem saída e o que aprendi pensando em voz alta."

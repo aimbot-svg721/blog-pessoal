@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article>
+  {{ with .GetTerms "categories" }}
+    <p class="kicker">
+      {{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+    </p>
+  {{ end }}
+  <h1>{{ .Title }}</h1>
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}

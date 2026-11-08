@@ -1,0 +1,23 @@
+{{- /* Meta description: front matter `description`, else the first sentence of the post (math removed), max 155 chars. */ -}}
+{{- $d := .Description -}}
+{{- if and (not $d) .IsPage -}}
+  {{- $text := .RawContent
+      | replaceRE `(?s)\$\$.*?\$\$` ""
+      | replaceRE `\$[^$\n]*\$` ""
+      | markdownify
+      | plainify
+      | htmlUnescape
+      | strings.TrimSpace -}}
+  {{- with findRE `(?s)^.+?[.!?](?:\s|$)` $text 1 -}}
+    {{- $d = index . 0 -}}
+  {{- else -}}
+    {{- $d = $text -}}
+  {{- end -}}
+{{- end -}}
+{{- if and (not $d) .IsHome -}}{{- $d = site.Params.description -}}{{- end -}}
+{{- if not $d -}}{{- $d = .Title -}}{{- end -}}
+{{- $d = $d | strings.TrimSpace -}}
+{{- if gt (strings.RuneCount $d) 155 -}}
+  {{- $d = printf "%s…" (substr $d 0 154) -}}
+{{- end -}}
+{{- return $d -}}

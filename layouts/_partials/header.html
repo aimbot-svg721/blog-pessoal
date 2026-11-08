@@ -1,0 +1,22 @@
+<header class="site-header">
+  <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+  <nav class="lang" aria-label="Language">
+    {{- $page := . -}}
+    {{- range $i, $home := site.Home.AllTranslations -}}
+      {{- $lang := $home.Language.Name -}}
+      {{- $target := $home -}}
+      {{- range $page.AllTranslations -}}
+        {{- if eq .Language.Name $lang }}{{ $target = . }}{{ end -}}
+      {{- end -}}
+      {{- if $i }}<span class="sep" aria-hidden="true">|</span>{{ end -}}
+      <a href="{{ $target.RelPermalink }}" lang="{{ $lang }}" hreflang="{{ $lang }}" data-lang="{{ $lang }}"
+         {{ if eq $lang site.Language.Name }}aria-current="true"{{ end }}>{{ upper $lang }}</a>
+    {{- end -}}
+  </nav>
+  <script>
+    document.querySelector('.lang').addEventListener('click', function (e) {
+      var a = e.target.closest('a[data-lang]');
+      if (a) { try { localStorage.setItem('lang', a.dataset.lang); } catch (_) {} }
+    });
+  </script>
+</header>

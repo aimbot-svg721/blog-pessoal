@@ -1,0 +1,16 @@
+{{- $desc := partial "description.html" . -}}
+{{- $title := cond .IsHome site.Title .Title -}}
+{{- $type := "website" -}}
+{{- if and .IsPage (eq .Section "posts") }}{{ $type = "article" }}{{ end -}}
+<meta name="description" content="{{ $desc }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ $type }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+{{- with site.Params.og_locale }}
+<meta property="og:locale" content="{{ . }}">
+{{- end }}
+{{- if eq $type "article" }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}

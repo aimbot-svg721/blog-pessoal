@@ -1,0 +1,8 @@
+[about]
+other = "About"
+[about_path]
+other = "about/"
+[contact]
+other = "Contact"
+[contact_path]
+other = "contact/"
