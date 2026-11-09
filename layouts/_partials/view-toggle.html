@@ -1,0 +1,40 @@
+<div class="post-view-toggle" role="group" aria-label="{{ i18n "post_view" }}">
+  <button type="button" data-post-view-button="list" aria-pressed="true">{{ i18n "view_list" }}</button>
+  <button type="button" data-post-view-button="grid" aria-pressed="false">{{ i18n "view_grid" }}</button>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var key = 'papel-post-view';
+    var view = 'list';
+
+    try {
+      var saved = window.localStorage.getItem(key);
+      if (saved === 'grid' || saved === 'list') view = saved;
+    } catch (_) {}
+
+    function setView(nextView, persist) {
+      view = nextView === 'grid' ? 'grid' : 'list';
+      root.setAttribute('data-post-view', view);
+
+      var buttons = document.querySelectorAll('[data-post-view-button]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute(
+          'aria-pressed',
+          buttons[i].getAttribute('data-post-view-button') === view ? 'true' : 'false'
+        );
+      }
+
+      if (persist) {
+        try { window.localStorage.setItem(key, view); } catch (_) {}
+      }
+    }
+
+    setView(view, false);
+    document.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-post-view-button]');
+      if (!button) return;
+      setView(button.getAttribute('data-post-view-button'), true);
+    });
+  })();
+</script>

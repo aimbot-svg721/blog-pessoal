@@ -1,6 +1,6 @@
 +++
 title = "About"
-draft = false
+draft = true
 translationKey = "about"
 description = "A little about Scratch Paper and the way this public notebook is written."
 +++

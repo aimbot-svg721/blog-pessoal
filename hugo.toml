@@ -3,7 +3,7 @@ baseURL = "https://aimbot-svg721.github.io/blog-pessoal/"
 defaultContentLanguage = "pt"
 defaultContentLanguageInSubdir = true
 disableDefaultSiteRedirect = true
-disableKinds = ["taxonomy", "section"]
+disableKinds = ["taxonomy", "section", "rss"]
 
 [taxonomies]
   category = "categories"

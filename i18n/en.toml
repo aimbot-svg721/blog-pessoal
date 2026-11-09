@@ -92,3 +92,9 @@ other = "caderno/"
 other = "off-topic/"
 [category_empty]
 other = "There are no posts in this area yet."
+[post_view]
+other = "Post view"
+[view_list]
+other = "List"
+[view_grid]
+other = "Grid"

@@ -1,15 +1,18 @@
 <li class="card">
-  {{ with .GetTerms "categories" }}
-    <p class="card-category">{{ (index . 0).LinkTitle }}</p>
-  {{ end }}
-  <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
-  {{- $summary := .Summary | plainify | htmlUnescape -}}
-  {{- if $summary }}
-    <p class="card-desc">{{ $summary }}</p>
-  {{- else }}
-    {{- with .Description }}<p class="card-desc">{{ . }}</p>{{ end -}}
-  {{- end }}
   <p class="card-meta">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>
   </p>
+  <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+  {{- $summary := .Summary | plainify | htmlUnescape -}}
+  {{- if not $summary }}{{ $summary = .Description | plainify | htmlUnescape }}{{ end -}}
+  {{- with $summary }}
+    <p class="card-desc" title="{{ . }}">{{ . }}</p>
+  {{- end }}
+  {{- with .GetTerms "categories" }}
+    <div class="card-tags" aria-label="{{ i18n "topics" }}">
+      {{- range . }}
+        <a class="card-tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+      {{- end }}
+    </div>
+  {{- end }}
 </li>

@@ -1,6 +1,6 @@
 +++
 title = "Contact"
-draft = false
+draft = true
 translationKey = "contact"
 description = "Contact information for the author of Scratch Paper."
 +++

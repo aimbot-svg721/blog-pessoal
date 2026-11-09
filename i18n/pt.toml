@@ -92,3 +92,9 @@ other = "caderno/"
 other = "off-topic/"
 [category_empty]
 other = "Ainda não há textos nesta área."
+[post_view]
+other = "Visualização dos artigos"
+[view_list]
+other = "Lista"
+[view_grid]
+other = "Grade"
