@@ -1,0 +1,31 @@
+{{ define "main" }}
+  {{- $posts := where site.RegularPages "Section" "posts" -}}
+  <div class="archive col">
+    <header class="archive-header">
+      <h1>{{ .Title }}</h1>
+      <div class="archive-intro prose">{{ .Content }}</div>
+    </header>
+    {{ range $posts.GroupByDate "2006" "desc" }}
+      <section class="archive-year" aria-labelledby="year-{{ .Key }}">
+        <h2 id="year-{{ .Key }}">{{ .Key }}</h2>
+        {{ range .Pages.GroupByDate "January" "desc" }}
+          {{ $monthPage := index .Pages 0 }}
+          <section class="archive-month">
+            <h3>{{ i18n (printf "month_%d" $monthPage.Date.Month) }}</h3>
+            <ul class="archive-list">
+              {{ range .Pages.ByDate.Reverse }}
+                <li>
+                  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>
+                  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                  {{ with .GetTerms "categories" }}<span class="archive-category">{{ (index . 0).LinkTitle }}</span>{{ end }}
+                </li>
+              {{ end }}
+            </ul>
+          </section>
+        {{ end }}
+      </section>
+    {{ else }}
+      <p>{{ i18n "archive_empty" }}</p>
+    {{ end }}
+  </div>
+{{ end }}

@@ -6,6 +6,16 @@ other = "sobre/"
 other = "Contato"
 [contact_path]
 other = "contato/"
+[archive]
+other = "Arquivo"
+[archive_path]
+other = "arquivo/"
+[blog]
+other = "Blog"
+[main_navigation]
+other = "Navegação principal"
+[archive_empty]
+other = "Ainda não há textos publicados."
 [skip]
 other = "Pular para o conteúdo"
 [featured]
@@ -19,8 +29,8 @@ other = "Neste texto"
 [date_fmt]
 other = "%[1]d %[2]s %[3]d"
 [post_count]
-one = "{{ .Count }} post"
-other = "{{ .Count }} posts"
+one = "{{ .Count }} texto"
+other = "{{ .Count }} textos"
 [month_1]
 other = "Janeiro"
 [mon_1]

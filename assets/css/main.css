@@ -154,3 +154,34 @@ a { color: inherit; }
 .site-footer { margin-top: var(--s-8); padding: var(--s-6) 0 var(--s-7); text-align: center; font: var(--fs-meta)/1.4 var(--font-sans); color: var(--text-2); }
 .site-footer a { color: inherit; text-decoration: none; }
 .site-footer a:hover { color: var(--accent); text-decoration: underline; }
+
+
+/* Navigation links inspired by personal editorial blogs */
+.primary-nav { display:flex; align-items:center; gap:1rem; margin-right:auto; }
+.primary-nav a { color:var(--text-2); text-decoration:none; font:var(--fs-meta)/1.4 var(--font-sans); }
+.primary-nav a:hover { color:var(--text); text-decoration:underline; text-underline-offset:.2em; }
+@media (max-width:760px) {
+  .nav-inner { flex-wrap:wrap; gap:0 .75rem; padding-block:.5rem; }
+  .site-title { margin-right:auto; }
+  .primary-nav { order:3; width:100%; justify-content:center; gap:2rem; padding:.5rem 0 .25rem; }
+  .nav-actions { margin-left:auto; }
+}
+
+/* Chronological archive */
+.archive { padding-top:var(--s-6); }
+.archive-header { margin-bottom:var(--s-6); }
+.archive-header h1 { margin:0 0 var(--s-2); font-size:var(--fs-h1); line-height:var(--lh-tight); }
+.archive-intro { color:var(--text-2); font-size:var(--fs-sm); }
+.archive-year { margin-top:var(--s-7); }
+.archive-year > h2 { margin:0 0 var(--s-4); font-size:1.65rem; line-height:1.2; }
+.archive-month { margin:0 0 var(--s-5); }
+.archive-month > h3 { margin:0 0 var(--s-2); color:var(--text-2); font:600 var(--fs-meta)/1.4 var(--font-sans); text-transform:uppercase; letter-spacing:.05em; }
+.archive-list { list-style:none; margin:0; padding:0; }
+.archive-list li { display:grid; grid-template-columns:5.5rem minmax(0,1fr) auto; align-items:baseline; gap:var(--s-3); padding:.35rem 0; border-bottom:1px solid var(--border); }
+.archive-list time, .archive-category { color:var(--text-2); font:var(--fs-meta)/1.4 var(--font-sans); }
+.archive-list a { text-decoration:none; }
+.archive-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:.15em; }
+@media (max-width:600px) {
+  .archive-list li { grid-template-columns:4.5rem minmax(0,1fr); }
+  .archive-category { grid-column:2; }
+}

@@ -6,6 +6,16 @@ other = "about/"
 other = "Contact"
 [contact_path]
 other = "contact/"
+[archive]
+other = "Archive"
+[archive_path]
+other = "archives/"
+[blog]
+other = "Blog"
+[main_navigation]
+other = "Main navigation"
+[archive_empty]
+other = "There are no published posts yet."
 [skip]
 other = "Skip to content"
 [featured]
