@@ -5,7 +5,8 @@ date = 2026-11-08
 draft = false
 translationKey = "numero-cem-testes"
 description = "Uma tentativa que sobreviveu a cem testes, até que um único valor revelou o que estava errado."
-categories = ["teoria-dos-numeros"],["IMO"]
+categories = ["teoria-dos-numeros"]
+tags = ["IMO"]
 +++
 
 Determine all real numbers $\alpha$ such that, for every positive integer $n$, the integer
