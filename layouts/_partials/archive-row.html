@@ -1,0 +1,10 @@
+<li class="archive-row">
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>
+  <div class="archive-entry">
+    <a class="archive-title" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    {{ with .Description }}<p class="archive-desc">{{ . }}</p>{{ end }}
+  </div>
+  {{ with .GetTerms "categories" }}
+    <a class="archive-category" href="{{ (index . 0).RelPermalink }}">{{ (index . 0).LinkTitle }}</a>
+  {{ end }}
+</li>

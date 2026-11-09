@@ -3,6 +3,7 @@
     <a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
     · <a href="{{ i18n "about_path" | relLangURL }}">{{ i18n "about" }}</a>
     · <a href="{{ i18n "contact_path" | relLangURL }}">{{ i18n "contact" }}</a>
+    {{ with site.Home.OutputFormats.Get "RSS" }} · <a href="{{ .RelPermalink }}">RSS</a>{{ end }}
     · {{ now.Year }}
   </div>
 </footer>

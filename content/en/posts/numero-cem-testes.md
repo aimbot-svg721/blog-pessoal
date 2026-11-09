@@ -4,6 +4,7 @@ slug = "the-number-that-passed-a-hundred-tests"
 date = 2026-11-08
 draft = false
 translationKey = "numero-cem-testes"
+description = "A conjecture survives a hundred tests, until one carefully chosen value reveals where it breaks."
 categories = ["number-theory"]
 +++
 

@@ -1,0 +1,9 @@
+<nav class="topics-nav shell" aria-label="{{ i18n "topics" }}">
+  <span class="topics-label">{{ i18n "topics" }}</span>
+  <div class="topics-list">
+    {{- range site.Params.nav_categories -}}
+      {{- $href := printf "%s/" .slug | relLangURL -}}
+      <a class="topic-link" href="{{ $href }}">{{ .name }}</a>
+    {{- end -}}
+  </div>
+</nav>

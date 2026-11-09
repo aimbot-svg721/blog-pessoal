@@ -1,9 +1,15 @@
 {{ define "main" }}
   <div class="col">
     <header class="term-header">
+      <p class="term-kicker">{{ i18n "topics" }}</p>
       <h1 class="term-title">{{ .Title }}</h1>
       <p class="term-count">{{ i18n "post_count" (len .Pages) }}</p>
+      {{ with .Content }}<div class="term-intro prose">{{ . }}</div>{{ end }}
     </header>
-    {{ partial "post-groups.html" .Pages }}
+    {{ if gt (len .Pages) 0 }}
+      {{ partial "post-groups.html" (dict "pages" .Pages) }}
+    {{ else }}
+      <p class="empty-state">{{ i18n "category_empty" }}</p>
+    {{ end }}
   </div>
 {{ end }}

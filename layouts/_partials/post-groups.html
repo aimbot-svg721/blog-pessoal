@@ -1,10 +1,13 @@
-{{- /* Context: Pages. Group posts by month, newest first. */ -}}
-{{ range (.GroupByDate "2006-01" "desc") }}
+{{- $pages := .pages -}}
+{{- with .heading }}
+  <h2 class="group-title recent-heading">{{ . }}</h2>
+{{- end }}
+{{ range ($pages.GroupByDate "2006-01" "desc") }}
   {{ $first := index .Pages 0 }}
   <section class="group">
-    <h2 class="group-title">{{ i18n (printf "month_%d" $first.Date.Month) }} {{ $first.Date.Year }}</h2>
-    <ul class="items">
-      {{ range .Pages.ByDate.Reverse }}{{ partial "item.html" . }}{{ end }}
+    <h3 class="group-title">{{ i18n (printf "month_%d" $first.Date.Month) }} {{ $first.Date.Year }}</h3>
+    <ul class="archive-list">
+      {{ range .Pages.ByDate.Reverse }}{{ partial "archive-row.html" . }}{{ end }}
     </ul>
   </section>
 {{ end }}

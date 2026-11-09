@@ -45,7 +45,6 @@ disableKinds = ["taxonomy", "section"]
       { name = "Number Theory", slug = "number-theory" },
       { name = "Algebra", slug = "algebra" },
       { name = "Geometry", slug = "geometry" },
-      { name = "World", slug = "world" },
     ]
 
 [languages.pt]
@@ -61,5 +60,4 @@ disableKinds = ["taxonomy", "section"]
       { name = "Teoria dos Números", slug = "teoria-dos-numeros" },
       { name = "Álgebra", slug = "algebra" },
       { name = "Geometria", slug = "geometria" },
-      { name = "Mundo", slug = "mundo" },
     ]

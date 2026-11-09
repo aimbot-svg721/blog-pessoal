@@ -2,6 +2,9 @@
 title = "Contato"
 draft = false
 translationKey = "contact"
+description = "Informações sobre contato com o autor do Papel de Rascunho."
 +++
 
-Para falar comigo, escreva para SEU-EMAIL@exemplo.com.
+Ainda estou preparando esta página. Por enquanto, não há um endereço público de contato.
+
+Obrigado por ler e acompanhar o caderno.
