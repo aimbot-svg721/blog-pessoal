@@ -79,3 +79,16 @@ other = "Nov"
 other = "December"
 [mon_12]
 other = "Dec"
+
+[topics]
+other = "Topics"
+[recent]
+other = "Recent"
+[caderno]
+other = "Notebook"
+[caderno_path]
+other = "caderno/"
+[off_topic_path]
+other = "off-topic/"
+[category_empty]
+other = "There are no posts in this area yet."

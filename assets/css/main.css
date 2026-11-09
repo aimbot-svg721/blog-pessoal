@@ -185,3 +185,228 @@ a { color: inherit; }
   .archive-list li { grid-template-columns:4.5rem minmax(0,1fr); }
   .archive-category { grid-column:2; }
 }
+
+
+/* ---------------------------------------------------------
+   Blog area navigation — five clear destinations, no drawer
+   --------------------------------------------------------- */
+.site-title {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -.035em;
+}
+.site-title:hover { color: var(--text); }
+.nav-inner { justify-content: flex-start; gap: .9rem; }
+.primary-nav {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: .35rem;
+  margin: 0;
+  min-width: 0;
+}
+.primary-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .38rem .65rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-2);
+  background: var(--surface);
+  font: 600 var(--fs-meta)/1.2 var(--font-sans);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.primary-nav a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.primary-nav a[aria-current="page"] {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, var(--bg));
+}
+.nav-actions { flex: 0 0 auto; margin-left: auto; }
+.menu { display: none !important; }
+
+/* Topic links replace the old three-line category menu. */
+.topics-nav {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-sans);
+}
+.topics-label {
+  color: var(--text-2);
+  font: 700 11px/1.2 var(--font-sans);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem .9rem;
+}
+.topic-link {
+  color: var(--accent);
+  font: 600 var(--fs-meta)/1.4 var(--font-sans);
+  text-decoration: none;
+}
+.topic-link:hover { text-decoration: underline; text-underline-offset: .18em; }
+
+@media (max-width: 900px) {
+  .nav-inner { flex-wrap: wrap; gap: .45rem .7rem; padding-block: .45rem; }
+  .site-title { margin-right: auto; }
+  .primary-nav {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: .2rem;
+  }
+  .nav-actions { margin-left: 0; }
+}
+@media (max-width: 600px) {
+  .nav-inner { width: min(100% - 1.5rem, var(--shell)); }
+  .primary-nav { gap: .3rem; }
+  .primary-nav a { padding: .36rem .55rem; }
+  .topics-nav { width: min(100% - 1.5rem, var(--shell)); align-items: flex-start; }
+  .topics-label { padding-top: .15rem; }
+  .topics-list { gap: .35rem .7rem; }
+}
+
+/* The masthead and subject headings share the notebook's warm accent. */
+.post-title, .term-title, .archive-header h1 { color: var(--accent); }
+.group-title { color: var(--accent); border-color: var(--border-strong); }
+.term-kicker {
+  margin: 0 0 .25rem;
+  color: var(--text-2);
+  font: 700 11px/1.3 var(--font-sans);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.term-intro { margin-top: .6rem; color: var(--text-2); font-size: var(--fs-sm); }
+
+/* Square featured stories, followed by the dated recent-post list. */
+.cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  aspect-ratio: 1 / 1;
+  min-height: 205px;
+  padding: 1rem;
+  gap: .65rem;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+}
+.card-category {
+  margin: 0;
+  color: var(--accent);
+  font: 700 11px/1.3 var(--font-sans);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.card-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.18;
+}
+.card-title a { color: var(--text); }
+.card-title a:hover { color: var(--accent); }
+.card-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  margin-top: .1rem;
+  white-space: normal;
+  line-height: 1.42;
+  font-size: .82rem;
+}
+.card-meta {
+  margin-top: auto;
+  padding-top: .5rem;
+  color: var(--text-2);
+  font: var(--fs-meta)/1.3 var(--font-sans);
+  text-align: left;
+}
+.recent-section { margin-top: var(--s-7); }
+.recent-heading { margin-top: 0; }
+.group { margin-top: var(--s-5); }
+.group .group-title { margin-top: 0; }
+
+/* Box each listed post so category pages and the archive share one visual system. */
+.archive-list {
+  display: grid;
+  gap: .5rem;
+}
+.archive-list li {
+  display: grid;
+  grid-template-columns: 5.3rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .25rem .85rem;
+  padding: .75rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+}
+.archive-list li:hover { border-color: var(--border-strong); }
+.archive-list time {
+  color: var(--text-2);
+  font: var(--fs-meta)/1.35 var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+.archive-entry { min-width: 0; }
+.archive-title {
+  color: var(--text);
+  font-size: .98rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.archive-title:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
+.archive-desc {
+  margin: .15rem 0 0;
+  color: var(--text-2);
+  font-size: .82rem;
+  line-height: 1.35;
+}
+.archive-category {
+  color: var(--accent);
+  font: 600 12px/1.3 var(--font-sans);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.archive-category:hover { text-decoration: underline; }
+.empty-state {
+  margin-top: var(--s-6);
+  padding: 1rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: 5px;
+  color: var(--text-2);
+  background: var(--surface);
+  font-size: var(--fs-sm);
+}
+@media (max-width: 650px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card { min-height: 190px; padding: .85rem; }
+  .archive-list li { grid-template-columns: 4.3rem minmax(0, 1fr); }
+  .archive-category { grid-column: 2; }
+}
+@media (max-width: 420px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .card { aspect-ratio: auto; min-height: 210px; }
+}

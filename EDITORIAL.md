@@ -49,7 +49,15 @@ Essa estrutura é uma ferramenta, não um formulário rígido. Um texto não pre
 
 ## Categorias
 
-Manter poucas categorias amplas e estáveis: Álgebra, Combinatória, Geometria, Teoria dos Números e Mundo. Quando uma categoria ficar cheia, não criar subcategorias automaticamente; primeiro avaliar se uma tag é suficiente.
+Manter poucas categorias amplas e estáveis: Álgebra, Combinatória, Geometria e Teoria dos Números. Caderno e Off-topic são áreas de publicação, não novas categorias matemáticas. Quando uma categoria ficar cheia, não criar subcategorias automaticamente; primeiro avaliar se uma tag é suficiente.
+
+## Áreas do site
+
+- **Blog:** página inicial, destaques em cartões quadrados e publicações recentes com datas.
+- **Sobre:** apresentação do autor e da proposta do caderno.
+- **Arquivo:** acervo cronológico completo.
+- **Caderno:** notas curtas, observações de estudo e bastidores de projetos. É a seção própria do projeto que cumpre um papel semelhante ao de uma seção autoral complementar em outros blogs.
+- **Off-topic:** textos que não pertencem diretamente à matemática, mas que merecem espaço no caderno.
 
 ## Idiomas
 

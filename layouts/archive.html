@@ -13,13 +13,7 @@
           <section class="archive-month">
             <h3>{{ i18n (printf "month_%d" $monthPage.Date.Month) }}</h3>
             <ul class="archive-list">
-              {{ range .Pages.ByDate.Reverse }}
-                <li>
-                  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>
-                  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                  {{ with .GetTerms "categories" }}<span class="archive-category">{{ (index . 0).LinkTitle }}</span>{{ end }}
-                </li>
-              {{ end }}
+              {{ range .Pages.ByDate.Reverse }}{{ partial "archive-row.html" . }}{{ end }}
             </ul>
           </section>
         {{ end }}

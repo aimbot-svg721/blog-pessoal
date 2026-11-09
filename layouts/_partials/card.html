@@ -1,8 +1,10 @@
 <li class="card">
+  {{ with .GetTerms "categories" }}
+    <p class="card-category">{{ (index . 0).LinkTitle }}</p>
+  {{ end }}
   <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
   {{ with .Description }}<p class="card-desc">{{ . }}</p>{{ end }}
   <p class="card-meta">
-    {{ with .GetTerms "categories" }}<span>{{ (index . 0).LinkTitle }}</span>{{ end }}
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>
   </p>
 </li>

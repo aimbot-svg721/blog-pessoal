@@ -1,11 +1,24 @@
+{{- $isBlog := or .IsHome (eq .Section "posts") -}}
+{{- $isAbout := eq .Params.translationKey "about" -}}
+{{- $isArchive := eq .Params.translationKey "archive" -}}
+{{- $isCaderno := false -}}
+{{- $isOffTopic := false -}}
+{{- if eq .Kind "term" -}}
+  {{- $isCaderno = eq .Data.Term "caderno" -}}
+  {{- $isOffTopic = eq .Data.Term "off-topic" -}}
+{{- end -}}
 <header class="nav">
   <div class="nav-inner shell">
     <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+
     <nav class="primary-nav" aria-label="{{ i18n "main_navigation" }}">
-      <a href="{{ site.Home.RelPermalink }}">{{ i18n "blog" }}</a>
-      <a href="{{ i18n "about_path" | relLangURL }}">{{ i18n "about" }}</a>
-      <a href="{{ i18n "archive_path" | relLangURL }}">{{ i18n "archive" }}</a>
+      <a href="{{ site.Home.RelPermalink }}" {{ if $isBlog }}aria-current="page"{{ end }}>{{ i18n "blog" }}</a>
+      <a href="{{ i18n "about_path" | relLangURL }}" {{ if $isAbout }}aria-current="page"{{ end }}>{{ i18n "about" }}</a>
+      <a href="{{ i18n "archive_path" | relLangURL }}" {{ if $isArchive }}aria-current="page"{{ end }}>{{ i18n "archive" }}</a>
+      <a href="{{ i18n "caderno_path" | relLangURL }}" {{ if $isCaderno }}aria-current="page"{{ end }}>{{ i18n "caderno" }}</a>
+      <a href="{{ i18n "off_topic_path" | relLangURL }}" {{ if $isOffTopic }}aria-current="page"{{ end }}>Off-topic</a>
     </nav>
+
     <div class="nav-actions">
       <button id="theme-toggle" class="icon-btn" type="button" aria-label="{{ i18n "theme_toggle" }}" aria-pressed="false">
         <svg class="icon icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8z"/></svg>
@@ -24,16 +37,6 @@
              {{ if eq $lang site.Language.Name }}aria-current="true"{{ end }}>{{ upper $lang }}</a>
         {{- end -}}
       </nav>
-      {{ with site.Params.nav_categories }}
-      <details class="menu">
-        <summary class="icon-btn" aria-label="{{ i18n "menu" }}">
-          <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </summary>
-        <ul class="menu-panel">
-          {{ range . }}<li><a href="{{ printf "%s/" .slug | relLangURL }}">{{ .name }}</a></li>{{ end }}
-        </ul>
-      </details>
-      {{ end }}
     </div>
   </div>
   <script>

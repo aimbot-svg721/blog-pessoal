@@ -79,3 +79,16 @@ other = "nov"
 other = "Dezembro"
 [mon_12]
 other = "dez"
+
+[topics]
+other = "Temas"
+[recent]
+other = "Recentes"
+[caderno]
+other = "Caderno"
+[caderno_path]
+other = "caderno/"
+[off_topic_path]
+other = "off-topic/"
+[category_empty]
+other = "Ainda não há textos nesta área."
