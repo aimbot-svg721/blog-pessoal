@@ -5,15 +5,16 @@ date = 2026-11-08
 draft = false
 translationKey = "numero-cem-testes"
 description = "Uma tentativa que sobreviveu a cem testes, até que um único valor revelou o que estava errado."
-categories = ["teoria-dos-numeros"]
+categories = ["teoria-dos-numeros"],["IMO"]
 +++
 
-São 23h e tem um número no meu caderno mentindo pra mim.
+Determine all real numbers $\alpha$ such that, for every positive integer $n$, the integer
 
-$$
-\alpha = 1{,}99
-$$
+$$\lfloor\alpha\rfloor +\lfloor 2\alpha\rfloor +\cdots +\lfloor n\alpha\rfloor$$
 
+is a multiple of $n.$ (Note that $\lfloor z\rfloor$ denotes the greatest integer less than or equal to $z.$ For example, $\lfloor -\pi\rfloor =-4$ and $\lfloor 2\rfloor= \lfloor 2.9\rfloor =2.$)
+
+$Solução.$
 Pros cem primeiros valores de $n$, ele faz exatamente o que o problema pede.
 
 Aí chega o $n = 101$, e ele desmorona.
