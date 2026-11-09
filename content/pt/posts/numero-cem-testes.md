@@ -15,7 +15,8 @@ $$\lfloor\alpha\rfloor +\lfloor 2\alpha\rfloor +\cdots +\lfloor n\alpha\rfloor$$
 
 is a multiple of $n.$ (Note that $\lfloor z\rfloor$ denotes the greatest integer less than or equal to $z.$ For example, $\lfloor -\pi\rfloor =-4$ and $\lfloor 2\rfloor= \lfloor 2.9\rfloor =2.$)
 
-$Solução.$
+*Solução*
+
 Pros cem primeiros valores de $n$, ele faz exatamente o que o problema pede.
 
 Aí chega o $n = 101$, e ele desmorona.
