@@ -1,3 +1,19 @@
 {{ define "main" }}
-  {{ partial "post-list.html" (where site.RegularPages "Section" "posts") }}
+  {{- $sorted := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+  {{- $n := site.Params.home_featured | default 3 -}}
+  {{- $featured := first $n $sorted -}}
+  {{- $rest := $sorted -}}
+  {{- if not site.Params.home_featured_in_list }}{{ $rest = after $n $sorted }}{{ end -}}
+  <div class="home col">
+    <h1 class="sr-only">{{ site.Title }}</h1>
+    {{ with $featured }}
+      <section aria-labelledby="featured-title">
+        <h2 id="featured-title" class="group-title first">{{ i18n "featured" }}</h2>
+        <ul class="cards">
+          {{ range . }}{{ partial "card.html" . }}{{ end }}
+        </ul>
+      </section>
+    {{ end }}
+    {{ partial "post-groups.html" $rest }}
+  </div>
 {{ end }}

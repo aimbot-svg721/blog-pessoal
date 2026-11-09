@@ -1,34 +1,36 @@
-# Requires Hugo >= 0.154.5 (uses Language.Name and disableDefaultSiteRedirect)
-baseURL = "https://aimbot-svg721.github.io/blog-pessoal/"   
+# Requires Hugo >= 0.154.5 (the deployment workflow uses 0.164.0)
+baseURL = "https://aimbot-svg721.github.io/blog-pessoal/"
 defaultContentLanguage = "pt"
 defaultContentLanguageInSubdir = true
-
-# static/index.html replaces Hugo's blind root redirect (language router)
 disableDefaultSiteRedirect = true
-
-# no "all categories" page, no section list pages, no Hugo-generated 404 (static/404.html instead)
-disableKinds = ["taxonomy", "section", "404"]
+disableKinds = ["taxonomy", "section"]
 
 [taxonomies]
   category = "categories"
 
 [permalinks]
-  # posts live at /<lang>/<slug>/ instead of /<lang>/posts/<slug>/
   [permalinks.page]
     posts = "/:slug/"
-  # category pages live at /<lang>/<slug>/ instead of /<lang>/categories/<slug>/
   [permalinks.term]
     categories = "/:slug/"
 
 [outputs]
   term = ["html"]
 
-# KaTeX rendered at build time ($...$ and $$...$$)
 [markup.goldmark.extensions.passthrough]
   enable = true
   [markup.goldmark.extensions.passthrough.delimiters]
     block  = [['\[', '\]'], ['$$', '$$']]
     inline = [['\(', '\)'], ['$', '$']]
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 2
+  ordered = false
+
+[params]
+  home_featured = 3
+  home_featured_in_list = false
 
 [languages.en]
   title = "Scratch Paper"
@@ -38,6 +40,13 @@ disableKinds = ["taxonomy", "section", "404"]
     hreflang = "en"
     og_locale = "en_US"
     description = "Essays on olympiad math problems: attempts, dead ends, and what I learned thinking out loud."
+    nav_categories = [
+      { name = "Combinatorics", slug = "combinatorics" },
+      { name = "Number Theory", slug = "number-theory" },
+      { name = "Algebra", slug = "algebra" },
+      { name = "Geometry", slug = "geometry" },
+      { name = "World", slug = "world" },
+    ]
 
 [languages.pt]
   title = "Papel de Rascunho"
@@ -47,3 +56,10 @@ disableKinds = ["taxonomy", "section", "404"]
     hreflang = "pt-BR"
     og_locale = "pt_BR"
     description = "Ensaios sobre problemas de olimpíada de matemática: tentativas, becos sem saída e o que aprendi pensando em voz alta."
+    nav_categories = [
+      { name = "Combinatória", slug = "combinatoria" },
+      { name = "Teoria dos Números", slug = "teoria-dos-numeros" },
+      { name = "Álgebra", slug = "algebra" },
+      { name = "Geometria", slug = "geometria" },
+      { name = "Mundo", slug = "mundo" },
+    ]

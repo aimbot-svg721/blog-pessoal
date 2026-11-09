@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://SEUDOMINIO.com.br/sitemap.xml
+Sitemap: https://aimbot-svg721.github.io/blog-pessoal/sitemap.xml

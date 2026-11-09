@@ -1,4 +1,9 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ partial "post-list.html" .Pages }}
+  <div class="col">
+    <header class="term-header">
+      <h1 class="term-title">{{ .Title }}</h1>
+      <p class="term-count">{{ i18n "post_count" (len .Pages) }}</p>
+    </header>
+    {{ partial "post-groups.html" .Pages }}
+  </div>
 {{ end }}

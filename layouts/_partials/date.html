@@ -1,0 +1,3 @@
+{{- /* Context: a time.Time. Date wording is localized in i18n/pt.toml and i18n/en.toml. */ -}}
+{{- $abbr := i18n (printf "mon_%d" .Month) -}}
+{{- printf (i18n "date_fmt") .Day $abbr .Year -}}

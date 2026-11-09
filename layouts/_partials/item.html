@@ -1,0 +1,5 @@
+<li class="item">
+  <a class="item-title" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  {{ with .GetTerms "categories" }}<span class="item-cat">{{ (index . 0).LinkTitle }}</span>{{ end }}
+  {{ with .Description }}<p class="item-desc">{{ . }}</p>{{ end }}
+</li>
