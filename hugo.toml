@@ -41,10 +41,10 @@ disableKinds = ["taxonomy", "section"]
     og_locale = "en_US"
     description = "Essays on olympiad math problems: attempts, dead ends, and what I learned thinking out loud."
     nav_categories = [
-      { name = "Combinatorics", slug = "combinatorics" },
-      { name = "Number Theory", slug = "number-theory" },
       { name = "Algebra", slug = "algebra" },
+      { name = "Combinatorics", slug = "combinatorics" },
       { name = "Geometry", slug = "geometry" },
+      { name = "NT", slug = "number-theory" },
     ]
 
 [languages.pt]
@@ -56,8 +56,8 @@ disableKinds = ["taxonomy", "section"]
     og_locale = "pt_BR"
     description = "Ensaios sobre problemas de olimpíada de matemática: tentativas, becos sem saída e o que aprendi pensando em voz alta."
     nav_categories = [
-      { name = "Combinatória", slug = "combinatoria" },
-      { name = "Teoria dos Números", slug = "teoria-dos-numeros" },
       { name = "Álgebra", slug = "algebra" },
+      { name = "Combinatória", slug = "combinatoria" },
       { name = "Geometria", slug = "geometria" },
+      { name = "TN", slug = "teoria-dos-numeros" },
     ]

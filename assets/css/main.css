@@ -3,7 +3,7 @@
   color-scheme: light dark;
   --bg: #fcfcfa; --surface: #f4f3ef; --text: #1b1b1a;
   --text-2: #5f5f5a; --border: #e4e2dc; --border-strong: #c9c6bd;
-  --accent: #b4432d; --nav-bg: rgb(252 252 250 / .86); --shadow: rgb(0 0 0 / .10);
+  --accent: #8b6d2d; --date-accent: #b4432d; --nav-bg: rgb(252 252 250 / .86); --shadow: rgb(0 0 0 / .10);
   --font-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype",
     "Book Antiqua", Charter, "Bitstream Charter", "Sitka Text", "Noto Serif", Cambria, Georgia, serif;
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -12,7 +12,7 @@
   --lh-body: 1.65; --lh-tight: 1.25;
   --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem;
   --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4.5rem;
-  --radius: 6px; --measure: 700px; --toc: 12rem; --gap: 2rem;
+  --radius: 6px; --measure: 760px; --toc: 12rem; --gap: 2rem;
   --shell: var(--measure);
 }
 @supports (color: light-dark(white, black)) {
@@ -23,7 +23,8 @@
     --text-2: light-dark(#5f5f5a, #a3a099);
     --border: light-dark(#e4e2dc, #2c2b28);
     --border-strong: light-dark(#c9c6bd, #4a4944);
-    --accent: light-dark(#b4432d, #e8765a);
+    --accent: light-dark(#8b6d2d, #d9bc69);
+    --date-accent: light-dark(#b4432d, #e8765a);
     --nav-bg: light-dark(rgb(252 252 250 / .86), rgb(21 21 19 / .86));
     --shadow: light-dark(rgb(0 0 0 / .10), rgb(0 0 0 / .45));
   }
@@ -34,8 +35,8 @@
 
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
-html { font-size: 19px; -webkit-text-size-adjust: 100%; scroll-padding-top: 4.5rem; }
-@media (max-width: 600px) { html { font-size: 18px; --fs-h1: 1.7rem; } }
+html { font-size: 20px; -webkit-text-size-adjust: 100%; scroll-padding-top: 4.5rem; }
+@media (max-width: 600px) { html { font-size: 19px; --fs-h1: 1.7rem; } }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-serif); line-height: var(--lh-body); }
 @media (prefers-reduced-motion: no-preference) {
   body, .nav, .card, .menu-panel, .post-toc, blockquote, .problem, .solution, pre, .icon-btn {
@@ -233,35 +234,6 @@ a { color: inherit; }
 .nav-actions { flex: 0 0 auto; margin-left: auto; }
 .menu { display: none !important; }
 
-/* Topic links replace the old three-line category menu. */
-.topics-nav {
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-  padding-top: .65rem;
-  padding-bottom: .65rem;
-  border-bottom: 1px solid var(--border);
-  font-family: var(--font-sans);
-}
-.topics-label {
-  color: var(--text-2);
-  font: 700 11px/1.2 var(--font-sans);
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
-.topics-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .4rem .9rem;
-}
-.topic-link {
-  color: var(--accent);
-  font: 600 var(--fs-meta)/1.4 var(--font-sans);
-  text-decoration: none;
-}
-.topic-link:hover { text-decoration: underline; text-underline-offset: .18em; }
-
 @media (max-width: 900px) {
   .nav-inner { flex-wrap: wrap; gap: .45rem .7rem; padding-block: .45rem; }
   .site-title { margin-right: auto; }
@@ -278,9 +250,6 @@ a { color: inherit; }
   .nav-inner { width: min(100% - 1.5rem, var(--shell)); }
   .primary-nav { gap: .3rem; }
   .primary-nav a { padding: .36rem .55rem; }
-  .topics-nav { width: min(100% - 1.5rem, var(--shell)); align-items: flex-start; }
-  .topics-label { padding-top: .15rem; }
-  .topics-list { gap: .35rem .7rem; }
 }
 
 /* The masthead and subject headings share the notebook's warm accent. */
@@ -305,9 +274,9 @@ a { color: inherit; }
   flex-direction: column;
   justify-content: flex-start;
   aspect-ratio: 1 / 1;
-  min-height: 205px;
-  padding: 1rem;
-  gap: .65rem;
+  min-height: 230px;
+  padding: 1.1rem;
+  gap: .7rem;
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: 6px;
@@ -322,7 +291,7 @@ a { color: inherit; }
 .card-title {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-size: clamp(1.08rem, 1.5vw, 1.35rem);
   line-height: 1.18;
 }
 .card-title a { color: var(--text); }
@@ -330,12 +299,12 @@ a { color: inherit; }
 .card-desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   margin-top: .1rem;
   white-space: normal;
-  line-height: 1.42;
-  font-size: .82rem;
+  line-height: 1.4;
+  font-size: .78rem;
 }
 .card-meta {
   margin-top: auto;
@@ -402,11 +371,20 @@ a { color: inherit; }
 }
 @media (max-width: 650px) {
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .card { min-height: 190px; padding: .85rem; }
+  .card { min-height: 210px; padding: .95rem; }
   .archive-list li { grid-template-columns: 4.3rem minmax(0, 1fr); }
   .archive-category { grid-column: 2; }
 }
 @media (max-width: 420px) {
   .cards { grid-template-columns: minmax(0, 1fr); }
-  .card { aspect-ratio: auto; min-height: 210px; }
+  .card { aspect-ratio: auto; min-height: 225px; }
+}
+
+
+/* Dates retain the notebook's original terracotta; other accents use warm ochre. */
+.card-meta time,
+.archive-list time,
+.post-date time,
+.post-footer time {
+  color: var(--date-accent);
 }
