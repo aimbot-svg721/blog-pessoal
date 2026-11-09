@@ -5,6 +5,9 @@
       <h1>{{ .Title }}</h1>
       <div class="archive-intro prose">{{ .Content }}</div>
     </header>
+    <div class="post-list-toolbar archive-view-toolbar">
+      {{ partial "view-toggle.html" . }}
+    </div>
     {{ range $posts.GroupByDate "2006" "desc" }}
       <section class="archive-year" aria-labelledby="year-{{ .Key }}">
         <h2 id="year-{{ .Key }}">{{ .Key }}</h2>

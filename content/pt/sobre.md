@@ -1,6 +1,6 @@
 +++
 title = "Sobre"
-draft = false
+draft = true
 translationKey = "about"
 description = "Um pouco sobre o Papel de Rascunho e a maneira como este caderno público é escrito."
 +++

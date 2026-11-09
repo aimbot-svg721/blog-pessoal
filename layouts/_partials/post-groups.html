@@ -1,7 +1,10 @@
 {{- $pages := .pages -}}
-{{- with .heading }}
-  <h2 class="group-title recent-heading">{{ . }}</h2>
-{{- end }}
+<div class="post-list-toolbar">
+  {{- with .heading }}
+    <h2 id="recent-title" class="group-title recent-heading">{{ . }}</h2>
+  {{- end }}
+  {{ partial "view-toggle.html" . }}
+</div>
 {{ range ($pages.GroupByDate "2006-01" "desc") }}
   {{ $first := index .Pages 0 }}
   <section class="group">

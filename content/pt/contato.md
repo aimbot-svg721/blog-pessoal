@@ -1,6 +1,6 @@
 +++
 title = "Contato"
-draft = false
+draft = true
 translationKey = "contact"
 description = "Informações sobre contato com o autor do Papel de Rascunho."
 +++
