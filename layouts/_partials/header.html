@@ -1,10 +1,8 @@
 {{- $isBlog := or .IsHome (eq .Section "posts") -}}
-{{- $isAbout := eq .Params.translationKey "about" -}}
-{{- $isArchive := eq .Params.translationKey "archive" -}}
-{{- $isCaderno := false -}}
 {{- $isOffTopic := false -}}
+{{- $activeCategory := "" -}}
 {{- if eq .Kind "term" -}}
-  {{- $isCaderno = eq .Data.Term "caderno" -}}
+  {{- $activeCategory = .Data.Term -}}
   {{- $isOffTopic = eq .Data.Term "off-topic" -}}
 {{- end -}}
 <header class="nav">
@@ -13,9 +11,10 @@
 
     <nav class="primary-nav" aria-label="{{ i18n "main_navigation" }}">
       <a href="{{ site.Home.RelPermalink }}" {{ if $isBlog }}aria-current="page"{{ end }}>{{ i18n "blog" }}</a>
-      <a href="{{ i18n "about_path" | relLangURL }}" {{ if $isAbout }}aria-current="page"{{ end }}>{{ i18n "about" }}</a>
-      <a href="{{ i18n "archive_path" | relLangURL }}" {{ if $isArchive }}aria-current="page"{{ end }}>{{ i18n "archive" }}</a>
-      <a href="{{ i18n "caderno_path" | relLangURL }}" {{ if $isCaderno }}aria-current="page"{{ end }}>{{ i18n "caderno" }}</a>
+      {{- range site.Params.nav_categories -}}
+        {{- $href := printf "%s/" .slug | relLangURL -}}
+        <a href="{{ $href }}" {{ if eq $activeCategory .slug }}aria-current="page"{{ end }}>{{ .name }}</a>
+      {{- end -}}
       <a href="{{ i18n "off_topic_path" | relLangURL }}" {{ if $isOffTopic }}aria-current="page"{{ end }}>Off-topic</a>
     </nav>
 
