@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>404 · Papel de Rascunho</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      margin: 0; padding: 4rem 1.25rem;
+      background: #fcfcfa; color: #1b1b1a;
+      font: 19px/1.65 Georgia, "Noto Serif", serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #151513; color: #e8e6e1; }
+    }
+    main { width: min(100%, 700px); margin: 0 auto; }
+    a { color: inherit; text-underline-offset: .15em; }
+    p { margin: 0 0 1rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>404</h1>
+    <p>Esta página não existe.</p>
+    <p><a href="{{ "pt/" | relURL }}">Voltar ao início</a>.</p>
+    <hr>
+    <p>This page does not exist.</p>
+    <p><a href="{{ "en/" | relURL }}">Back to the home page</a>.</p>
+  </main>
+</body>
+</html>

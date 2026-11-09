@@ -1,11 +1,36 @@
 {{ define "main" }}
-<article>
-  {{ with .GetTerms "categories" }}
-    <p class="kicker">
-      {{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
-    </p>
-  {{ end }}
-  <h1>{{ .Title }}</h1>
-  <div class="prose">{{ .Content }}</div>
-</article>
+  {{- $isPost := and .IsPage (eq .Section "posts") -}}
+  {{- $terms := .GetTerms "categories" -}}
+  {{- $toc := .TableOfContents -}}
+  {{- $showTOC := gt (len (findRE "<li>" $toc)) 1 -}}
+  <article class="post">
+    <header class="post-header">
+      {{ with $terms }}<p class="post-cat">{{ (index . 0).LinkTitle }}</p>{{ end }}
+      <h1 class="post-title">{{ .Title }}</h1>
+      {{ if $isPost }}
+        <p class="post-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time></p>
+      {{ end }}
+    </header>
+    {{ if $showTOC }}
+      <aside class="post-toc">
+        <details id="toc">
+          <summary>{{ i18n "toc" }}</summary>
+          {{ $toc }}
+        </details>
+      </aside>
+      <script>
+        (function () {
+          var toc = document.getElementById('toc');
+          if (toc && window.matchMedia('(min-width: 1024px)').matches) toc.open = true;
+        })();
+      </script>
+    {{ end }}
+    <div class="post-body prose">{{ .Content }}</div>
+    {{ if $isPost }}
+      <footer class="post-footer">
+        {{ with $terms }}<a href="{{ (index . 0).RelPermalink }}">{{ (index . 0).LinkTitle }}</a> · {{ end }}
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>
+      </footer>
+    {{ end }}
+  </article>
 {{ end }}

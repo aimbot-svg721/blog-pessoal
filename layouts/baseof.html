@@ -3,21 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}</title>
+  <meta name="color-scheme" content="light dark">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  {{/* Apply the saved theme before the first paint to avoid a flash. */}}
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch (_) {}
+    })();
+  </script>
   {{ partial "head-lang.html" . }}
   {{ partial "head-seo.html" . }}
-  <link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-  {{/* The noop forces Hugo to render the content before we read the Store flag set by the math render hook. */}}
+  {{/* Render the page before checking the Store flag set by the math render hook. */}}
   {{ $noop := .WordCount }}
   {{ if .Page.Store.Get "hasMath" }}
-    <link rel="stylesheet" href="/katex/katex.min.css">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
   {{ end }}
 </head>
 <body>
+  <a class="skip" href="#main">{{ i18n "skip" }}</a>
   {{ partial "header.html" . }}
-  <main>
+  <main id="main" class="shell">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}

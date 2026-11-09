@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<script>
-const lang = localStorage.getItem('lang') || 'pt';
-window.location.replace('/' + lang + '/');
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Papel de Rascunho</title>
+  <script>
+    (function () {
+      var lang = 'pt';
+      try {
+        var saved = localStorage.getItem('lang');
+        if (saved === 'pt' || saved === 'en') lang = saved;
+      } catch (_) {}
+      var projectRoot = new URL('./', window.location.href);
+      window.location.replace(new URL(lang + '/', projectRoot).href);
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=./pt/">
 </head>
 <body>
-<meta http-equiv="refresh" content="0; url=/pt/">
+  <p><a href="./pt/">Abrir o blog</a> · <a href="./en/">Open the blog</a></p>
 </body>
-</html>   
+</html>

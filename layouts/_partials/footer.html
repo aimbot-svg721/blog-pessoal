@@ -1,5 +1,8 @@
 <footer class="site-footer">
-  <a href="{{ i18n "about_path" | relLangURL }}">{{ i18n "about" }}</a>
-  · <a href="{{ i18n "contact_path" | relLangURL }}">{{ i18n "contact" }}</a>
-  · {{ now.Year }}
+  <div class="shell">
+    <a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+    · <a href="{{ i18n "about_path" | relLangURL }}">{{ i18n "about" }}</a>
+    · <a href="{{ i18n "contact_path" | relLangURL }}">{{ i18n "contact" }}</a>
+    · {{ now.Year }}
+  </div>
 </footer>
