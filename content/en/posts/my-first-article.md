@@ -21,15 +21,20 @@ Prove that the points $E, K, Q,$ and $C$ are concyclic.
 
 *Solution.* 
 
-Let $S: PK\cap AD$ and $R: EG\cap AB$.
-$Claim_1$: $\angle GBP=\angle ERP=\angle GRP=45^\circ$
-As $G: AP\perp RE$, then $90^\circ =\angle PGR=\angle RBP$ means $GRBP$ is cylic and by angle chasing $\angle GBP=\angle ERP=\angle GRP=45^\circ$. $\square$
-$Claim_2:$ $GP=GR$
-By $Claim_1$: we have the fact $\angle ABG=\angle RBG=\angle GBP=45^\circ$ means $BG$ bisects $\angle ABP$ and $G$ is middle point of $\widehat{RP}$ not contains $B$, then $GP=GR$. $\square$
-$Claim_3:$ $\angle EAG=\angle GEA=45^\circ$
-Analogous with $Claim_1$ and $Claim_2$, discover $EDAG$ is cyclic and $G$ is the middle point of $\widehat{EA}$ not contains $D$, we obtain $GA=GE \Longrightarrow \angle EAG=\angle GEA= 45^\circ$ $\square$
-$Claim_4:$ $GR=GK$.
-By $Claim_1$, $Claim_2$ and $Claim_3$, we obtain $ARPE$ is a isoscele trapezoid, then $AR=EP \Longrightarrow AR=EP=AK \Longrightarrow AR=AK$ then $\triangle KAR$ is isosceles and $\angle AGK=90^\circ \Longrightarrow G$ is a middle point of $KR$ where $GR=GK$. $\square$
-By $Claim_2$ and $Claim_4$: we have $GP=GK \Longrightarrow \triangle KGP$ is rectangle isosceles, where $\angle PKG=45^\circ \Longrightarrow \angle SKE=45^\circ \Longrightarrow 180^\circ -\angle EKQ=45^\circ \Longrightarrow 180^\circ=\angle EKQ+45^\circ$ and notice that $\angle ACD=\angle QCE=45^\circ$ then $180^\circ =\angle EKQ+\angle QCE$ means $EKQC$ is cyclic, and we are done.
+Let $S: PK\cap AD$ and $R: EG\cap AB$. \par
 
-![Figura 1 — Configuração geométrica](/blog-pessoal/images/42cc1bd39b653fb1e985e8ca41ca71e8c9aff1 (1).svg)
+$Claim_1$: $\angle GBP=\angle ERP=\angle GRP=45^\circ$ \par
+As $G: AP\perp RE$, then $90^\circ =\angle PGR=\angle RBP$ means $GRBP$ is cylic and by angle chasing $\angle GBP=\angle ERP=\angle GRP=45^\circ$. $\square$\par
+
+$Claim_2:$ $GP=GR$ \par
+By $Claim_1$: we have the fact $\angle ABG=\angle RBG=\angle GBP=45^\circ$ means $BG$ bisects $\angle ABP$ and $G$ is middle point of $\widehat{RP}$ not contains $B$, then $GP=GR$. $\square$
+$Claim_3:$ $\angle EAG=\angle GEA=45^\circ$.\par
+
+Analogous with $Claim_1$ and $Claim_2$, discover $EDAG$ is cyclic and $G$ is the middle point of $\widehat{EA}$ not contains $D$, we obtain $GA=GE \Longrightarrow \angle EAG=\angle GEA= 45^\circ$ $\square$\par
+
+$Claim_4:$ $GR=GK$.\par
+
+By $Claim_1$, $Claim_2$ and $Claim_3$, we obtain $ARPE$ is a isoscele trapezoid, then $AR=EP \Longrightarrow AR=EP=AK \Longrightarrow AR=AK$ then $\triangle KAR$ is isosceles and $\angle AGK=90^\circ \Longrightarrow G$ is a middle point of $KR$ where $GR=GK$. $\square$\par
+By $Claim_2$ and $Claim_4$: we have $GP=GK \Longrightarrow \triangle KGP$ is rectangle isosceles, where $\angle PKG=45^\circ \Longrightarrow \angle SKE=45^\circ \Longrightarrow 180^\circ -\angle EKQ=45^\circ \Longrightarrow 180^\circ=\angle EKQ+45^\circ$ and notice that $\angle ACD=\angle QCE=45^\circ$ then $180^\circ =\angle EKQ+\angle QCE$ means $EKQC$ is cyclic, and we are done.\par
+
+![Figura 1 - Construção](/blog-pessoal/images/Cono Sur 2025 #1(1).svg)
