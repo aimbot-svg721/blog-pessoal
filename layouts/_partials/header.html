@@ -7,7 +7,7 @@
 {{- end -}}
 <header class="nav">
   <div class="nav-inner shell">
-    <a class="site-title" href="{{ site.Home.RelPermalink }}"><img class="site-logo" src="{{ "favicon.svg" | relURL }}" alt=""><span>{{ site.Title }}</span></a>
+    <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
 
     <nav class="primary-nav" aria-label="{{ i18n "main_navigation" }}">
       <a href="{{ site.Home.RelPermalink }}" {{ if $isBlog }}aria-current="page"{{ end }}>{{ i18n "blog" }}</a>
