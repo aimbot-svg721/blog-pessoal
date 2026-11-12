@@ -1,4 +1,4 @@
-# Papel de Rascunho / Scratch Paper
+# GuiOnMaths
 
 Blog pessoal bilíngue (PT-BR / EN), construído com Hugo. O projeto usa layouts próprios, sem tema de terceiros, e renderiza a matemática durante a geração do site.
 

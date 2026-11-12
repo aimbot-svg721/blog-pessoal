@@ -33,7 +33,7 @@ disableKinds = ["taxonomy", "section", "rss"]
   home_featured_in_list = false
 
 [languages.en]
-  title = "Scratch Paper"
+  title = "GuiOnMaths"
   weight = 1
   contentDir = "content/en"
   [languages.en.params]
@@ -48,7 +48,7 @@ disableKinds = ["taxonomy", "section", "rss"]
     ]
 
 [languages.pt]
-  title = "Papel de Rascunho"
+  title = "GuiOnMaths"
   weight = 2
   contentDir = "content/pt"
   [languages.pt.params]
