@@ -1,0 +1,7 @@
+{{- $light := .Get "light" | relURL -}}
+{{- $dark := .Get "dark" | relURL -}}
+{{- $alt := .Get "alt" | default "" -}}
+<figure class="theme-figure">
+  <img class="theme-figure-light" src="{{ $light }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+  <img class="theme-figure-dark" src="{{ $dark }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+</figure>

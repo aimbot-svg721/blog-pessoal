@@ -137,6 +137,17 @@ a { color: inherit; }
 .prose a:hover { color: var(--accent); }
 .prose blockquote { margin: var(--s-5) 0; padding-left: 1.25rem; border-left: 2px solid var(--border-strong); }
 .prose img { max-width: 100%; height: auto; }
+
+.theme-figure { margin: var(--s-5) 0; }
+.theme-figure img { display: block; max-width: 100%; height: auto; margin-inline: auto; }
+.theme-figure .theme-figure-dark { display: none; }
+:root[data-theme="dark"] .theme-figure-light { display: none; }
+:root[data-theme="dark"] .theme-figure-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-figure-light { display: none; }
+  :root:not([data-theme="light"]) .theme-figure-dark { display: block; }
+}
+
 .prose pre, .prose code { font-size: .85em; }
 .prose pre { overflow-x: auto; padding: var(--s-3) var(--s-4); background: var(--surface); border-radius: var(--radius); }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }

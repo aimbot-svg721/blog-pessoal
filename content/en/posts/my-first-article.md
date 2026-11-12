@@ -43,4 +43,4 @@ By $Claim_1$, $Claim_2$ and $Claim_3$, we obtain $ARPE$ is a isoscele trapezoid,
 
 By $Claim_2$ and $Claim_4$: we have $GP=GK \Longrightarrow \triangle KGP$ is rectangle isosceles, where $\angle PKG=45^\circ \Longrightarrow \angle SKE=45^\circ \Longrightarrow 180^\circ -\angle EKQ=45^\circ \Longrightarrow 180^\circ=\angle EKQ+45^\circ$ and notice that $\angle ACD=\angle QCE=45^\circ$ then $180^\circ =\angle EKQ+\angle QCE$ means $EKQC$ is cyclic, and we are done.
 
-![Figura 1 - Construção](/blog-pessoal/images/cono-sur-1.svg)
+{{< theme-figure light="images/cono-sur-1.svg" dark="images/cono-sur-1-dark.svg" alt="Geometric construction for Cono Sur 2025 Problem 1" >}}

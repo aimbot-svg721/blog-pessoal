@@ -41,4 +41,4 @@ Pelas Afirmações 1, 2 e 3, obtemos que $ARPE$ forma um trapézio isósceles. P
 
 Pelas Afirmações 2 e 4, temos $GP=GK$. Logo, o triângulo $KGP$ é retângulo isósceles, de modo que $\angle PKG=45^\circ$. Portanto, $\angle SKE=45^\circ$ e, consequentemente, $180^\circ-\angle EKQ=45^\circ$. Daí, $180^\circ=\angle EKQ+45^\circ$. Observe também que $\angle ACD=\angle QCE=45^\circ$. Assim, $180^\circ=\angle EKQ+\angle QCE$, o que significa que $EKQC$ é cíclico. Isso conclui a demonstração.
 
-![Figura 1 — Construção geométrica](/blog-pessoal/images/cono-sur-1.svg)
+{{< theme-figure light="images/cono-sur-1.svg" dark="images/cono-sur-1-dark.svg" alt="Construção geométrica do problema 1 do Cono Sur 2025" >}}
