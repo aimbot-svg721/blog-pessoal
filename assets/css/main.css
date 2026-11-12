@@ -139,7 +139,7 @@ a { color: inherit; }
 .prose img { max-width: 100%; height: auto; }
 
 .theme-figure { margin: var(--s-5) 0; }
-.theme-figure img { display: block; max-width: 100%; height: auto; margin-inline: auto; }
+.theme-figure img { display: block; width: 100%; max-width: 100%; height: auto; margin-inline: auto; }
 .theme-figure .theme-figure-dark { display: none; }
 :root[data-theme="dark"] .theme-figure-light { display: none; }
 :root[data-theme="dark"] .theme-figure-dark { display: block; }
