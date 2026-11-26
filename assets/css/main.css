@@ -109,26 +109,128 @@ a { color: inherit; }
 .term-title { margin: 0; font-size: var(--fs-h1); line-height: var(--lh-tight); }
 .term-count { margin: var(--s-1) 0 0; font: var(--fs-meta)/1.4 var(--font-sans); color: var(--text-2); }
 
-/* Article page */
-.post { display: grid; grid-template-columns: minmax(0, 1fr); padding-top: var(--s-6); }
+/* Article page: centered reading column with a separate fixed TOC rail. */
+.post {
+  display: block;
+  width: 100%;
+  padding-top: var(--s-6);
+}
+.post-header,
+.post-body,
+.post-footer,
+.post-next {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+}
 .post-header { margin-bottom: var(--s-6); }
-.post-cat { margin: 0 0 var(--s-2); font: var(--fs-meta)/1.4 var(--font-sans); color: var(--text-2); }
-.post-title { margin: 0 0 var(--s-2); font-size: var(--fs-h1); line-height: var(--lh-tight); font-weight: 700; }
-.post-date { margin: 0; font: var(--fs-meta)/1.4 var(--font-sans); color: var(--text-2); }
-.post-footer { margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--border); font: var(--fs-meta)/1.4 var(--font-sans); color: var(--text-2); }
+.post-cat {
+  margin: 0 0 var(--s-2);
+  color: var(--text-2);
+  font: var(--fs-meta)/1.4 var(--font-sans);
+}
+.post-title {
+  margin: 0 0 var(--s-2);
+  color: var(--accent);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  font-weight: 700;
+}
+.post-date {
+  margin: 0;
+  color: var(--text-2);
+  font: var(--fs-meta)/1.4 var(--font-sans);
+}
+.post-footer {
+  margin-top: var(--s-7);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border);
+  color: var(--text-2);
+  font: var(--fs-meta)/1.4 var(--font-sans);
+}
 .post-footer a { color: inherit; }
 .post-footer a:hover { color: var(--accent); }
-.post-toc { margin: 0 0 var(--s-6); padding: var(--s-2) var(--s-4); border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font-sans); font-size: var(--fs-meta); }
-.post-toc summary { cursor: pointer; padding: var(--s-1) 0; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); }
-#TableOfContents ul { list-style: none; margin: 0; padding: 0; }
-#TableOfContents a { display: block; padding: .3rem 0; line-height: 1.4; color: var(--text-2); text-decoration: none; }
-#TableOfContents a:hover { color: var(--accent); }
-@media (min-width: 1024px) {
-  .post { grid-template-columns: minmax(0, var(--measure)) var(--toc); column-gap: var(--gap); }
-  .post-header, .post-body, .post-footer { grid-column: 1; }
-  .post-toc { grid-column: 2; grid-row: 1 / span 3; align-self: start; position: sticky; top: 4.5rem; margin: 0; padding: 0 0 0 var(--s-4); border: 0; border-left: 1px solid var(--border); border-radius: 0; }
-}
 
+/* In the narrow layout, the TOC sits above the article. */
+.post-sidebar {
+  width: 100%;
+  margin: 0 auto var(--s-6);
+  padding: .85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+}
+.post-toc { margin: 0; padding: 0; }
+.post-toc h2 {
+  margin: 0 0 .55rem;
+  color: var(--text-2);
+  font: 700 .68rem/1.3 var(--font-sans);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+#TableOfContents { margin: 0; }
+#TableOfContents ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#TableOfContents ul ul { padding-left: .8rem; }
+#TableOfContents li { margin: 0; }
+#TableOfContents a {
+  display: block;
+  padding: .2rem 0;
+  color: var(--text-2);
+  font: .72rem/1.4 var(--font-sans);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+#TableOfContents a:hover { color: var(--accent); }
+.back-to-top {
+  display: inline-block;
+  margin-top: .65rem;
+  padding-top: .55rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-2);
+  font: 600 .7rem/1.4 var(--font-sans);
+  text-decoration: none;
+}
+.back-to-top:hover { color: var(--accent); }
+
+/* Desktop: the article stays centered; the TOC has its own viewport scroll. */
+@media (min-width: 1024px) {
+  main.shell:has(> .post) {
+    width: min(100% - 3rem, var(--measure));
+  }
+  .post-header,
+  .post-body,
+  .post-footer,
+  .post-next {
+    width: min(var(--measure), calc(100vw - var(--toc) - var(--toc) - 4rem));
+    max-width: var(--measure);
+  }
+  .post-sidebar {
+    position: fixed;
+    z-index: 20;
+    top: 4.5rem;
+    right: 1.25rem;
+    width: var(--toc);
+    max-height: calc(100vh - 5.5rem);
+    margin: 0;
+    padding: 0 0 0 .8rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    border: 0;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--bg);
+  }
+  .post-toc { position: static; }
+  .back-to-top { max-width: 100%; }
+}
 /* Article typography */
 .prose h2 { font-size: var(--fs-h2); line-height: 1.3; margin: 2.5rem 0 var(--s-4); }
 .prose h3 { font-size: var(--fs-h3); line-height: 1.3; margin: var(--s-6) 0 var(--s-3); }
@@ -582,149 +684,4 @@ html[data-post-view="grid"] .archive-category:hover {
   .cards { grid-template-columns: minmax(0, 1fr); }
   .cards .card { min-height: 16rem; }
   html[data-post-view="grid"] .archive-list { grid-template-columns: minmax(0, 1fr); }
-}
-
-
-/* Article sidebar: automatic table of contents and return-to-top link. */
-.post-sidebar {
-  margin: 0 0 var(--s-6);
-  padding: .85rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-family: var(--font-sans);
-  font-size: var(--fs-meta);
-}
-.post-toc { margin: 0; padding: 0; border: 0; border-radius: 0; }
-.post-toc h2 {
-  margin: 0 0 .55rem;
-  color: var(--text-2);
-  font: 700 .68rem/1.3 var(--font-sans);
-  letter-spacing: .07em;
-  text-transform: uppercase;
-}
-#TableOfContents ul { list-style: none; margin: 0; padding: 0; }
-#TableOfContents ul ul { padding-left: .8rem; }
-#TableOfContents li { margin: 0; }
-#TableOfContents a {
-  display: block;
-  padding: .2rem 0;
-  color: var(--text-2);
-  font: .72rem/1.4 var(--font-sans);
-  text-decoration: none;
-}
-#TableOfContents a:hover { color: var(--accent); }
-.back-to-top {
-  display: inline-block;
-  margin-top: .65rem;
-  padding-top: .55rem;
-  border-top: 1px solid var(--border);
-  color: var(--text-2);
-  font: 600 .7rem/1.4 var(--font-sans);
-  text-decoration: none;
-}
-.back-to-top:hover { color: var(--accent); }
-.prose h2, .prose h3 { scroll-margin-top: 5rem; }
-
-.post-next {
-  grid-column: 1;
-  margin-top: var(--s-6);
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--surface);
-}
-.post-next-label {
-  margin: 0 0 .35rem;
-  color: var(--text-2);
-  font: 700 .66rem/1.3 var(--font-sans);
-  letter-spacing: .07em;
-  text-transform: uppercase;
-}
-.post-next > a {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  color: var(--text);
-  font: 600 1rem/1.35 var(--font-serif);
-  text-decoration: none;
-}
-.post-next > a:hover { color: var(--accent); }
-
-@media (min-width: 1024px) {
-  .post-header, .post-body, .post-footer, .post-next { grid-column: 1; }
-  .post-sidebar {
-    grid-column: 2;
-    grid-row: 1 / span 4;
-    align-self: start;
-    position: sticky;
-    top: 4.5rem;
-    margin: 0;
-    padding: 0 0 0 1rem;
-    border: 0;
-    border-left: 1px solid var(--border);
-    border-radius: 0;
-  }
-}
-
-
-/* Keep the article centered; pin the independently scrollable TOC to the viewport edge. */
-@media (min-width: 1200px) {
-  .shell:has(> .post) {
-    width: min(100% - 3rem, var(--measure));
-  }
-  .post {
-    display: block;
-    width: 100%;
-  }
-  .post-header,
-  .post-body,
-  .post-footer,
-  .post-next {
-    width: 100%;
-    max-width: var(--measure);
-    margin-inline: auto;
-  }
-  .post-sidebar {
-    position: fixed;
-    z-index: 5;
-    top: 5rem;
-    right: 1.5rem;
-    width: var(--toc);
-    max-height: calc(100vh - 6rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
-    padding: 0 0 0 1rem;
-    border: 0;
-    border-left: 1px solid var(--border);
-    border-radius: 0;
-  }
-}
-
-/* On narrower screens, keep the TOC in normal document flow. */
-@media (min-width: 1024px) and (max-width: 1199px) {
-  .shell:has(> .post) {
-    width: min(100% - 3rem, var(--measure));
-  }
-  .post { display: block; }
-  .post-header,
-  .post-body,
-  .post-footer,
-  .post-next {
-    width: 100%;
-    max-width: var(--measure);
-    margin-inline: auto;
-  }
-  .post-sidebar {
-    position: static;
-    width: 100%;
-    max-width: var(--measure);
-    max-height: none;
-    overflow: visible;
-    margin: 0 auto var(--s-6);
-    padding: .85rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
 }
