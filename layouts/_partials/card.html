@@ -8,9 +8,14 @@
   {{- with $summary }}
     <p class="card-desc" title="{{ . }}">{{ . }}</p>
   {{- end }}
-  {{- with .GetTerms "categories" }}
+  {{- $categories := .GetTerms "categories" -}}
+  {{- $tags := .GetTerms "tags" -}}
+  {{- if or $categories $tags }}
     <div class="card-tags" aria-label="{{ i18n "topics" }}">
-      {{- range . }}
+      {{- range $categories }}
+        <a class="card-tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+      {{- end }}
+      {{- range $tags }}
         <a class="card-tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
       {{- end }}
     </div>
