@@ -45,9 +45,33 @@ jobs:
           test -f public/pt/busca/index.html
           test -f public/en/search/index.html
           test -f public/pt/tags/imo/index.html
-          grep -q 'id="search-index"' public/pt/busca/index.html
-          grep -q 'id="search-index"' public/en/search/index.html
-          grep -q '"topics"' public/pt/busca/index.html
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          for path in ("public/pt/busca/index.html", "public/en/search/index.html"):
+              html = Path(path).read_text(encoding="utf-8")
+              match = re.search(
+                  r'<script type="application/json" id="search-index">(.*?)</script>',
+                  html,
+                  re.DOTALL,
+              )
+              assert match, f"Search index missing from {path}"
+              entries = json.loads(match.group(1))
+              assert entries, f"Search index is empty in {path}"
+              assert all("topics" in entry for entry in entries), f"Topics missing in {path}"
+              print(f"Validated {path}: {len(entries)} indexed articles")
+
+          portuguese = json.loads(
+              re.search(
+                  r'<script type="application/json" id="search-index">(.*?)</script>',
+                  Path("public/pt/busca/index.html").read_text(encoding="utf-8"),
+                  re.DOTALL,
+              ).group(1)
+          )
+          assert any("IMO" in entry["topics"] for entry in portuguese), "IMO tag missing from Portuguese search index"
+          PY
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
