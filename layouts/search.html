@@ -1,6 +1,7 @@
 {{ define "main" }}
   {{- $entries := slice -}}
   {{- range where site.RegularPages "Section" "posts" -}}
+    {{- if .Title -}}
     {{- $description := .Description | plainify | htmlUnescape -}}
     {{- if not $description -}}
       {{- $description = .Summary | plainify | htmlUnescape -}}
@@ -21,6 +22,7 @@
       "date" (.Date.Format "2006-01-02")
       "dateLabel" (partial "date.html" .Date)
     ) -}}
+    {{- end -}}
   {{- end -}}
   {{- $searchJS := resources.Get "js/search.js" | minify | fingerprint -}}
   <div
