@@ -52,8 +52,12 @@ jobs:
 
           for path in ("public/pt/busca/index.html", "public/en/search/index.html"):
               html = Path(path).read_text(encoding="utf-8")
+              marker = html.find("search-index")
+              print(f"Search marker in {path}: {marker}")
+              if marker >= 0:
+                  print(html[max(0, marker - 120):marker + 700])
               match = re.search(
-                  r'<script type="application/json" id="search-index">(.*?)</script>',
+                  r'<script\\b(?=[^>]*id="search-index")(?=[^>]*type="application/json")[^>]*>(.*?)</script>',
                   html,
                   re.DOTALL,
               )
