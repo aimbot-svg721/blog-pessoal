@@ -116,7 +116,8 @@
       noResults: container.getAttribute("data-no-results") || "",
       error: container.getAttribute("data-error") || "",
       one: container.getAttribute("data-result-one") || "",
-      many: container.getAttribute("data-result-many") || ""
+      many: container.getAttribute("data-result-many") || "",
+      topics: container.getAttribute("data-topics-label") || "Topics"
     };
 
     var entries;
