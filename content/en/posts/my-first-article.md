@@ -23,21 +23,21 @@ Prove that the points $E, K, Q,$ and $C$ are concyclic.
 
 Let $S: PK\cap AD$ and $R: EG\cap AB$. \par
 
-$Claim_1$: $\angle GBP=\angle ERP=\angle GRP=45^\circ$ 
+### Claim 1 $\angle GBP=\angle ERP=\angle GRP=45^\circ$ 
 
 As $G: AP\perp RE$, then $90^\circ =\angle PGR=\angle RBP$ means $GRBP$ is cylic and by angle chasing $\angle GBP=\angle ERP=\angle GRP=45^\circ$. $\square$
 
-$Claim_2:$ $GP=GR$ 
+### Claim 2 $GP=GR$ 
 
 By $Claim_1$: we have the fact $\angle ABG=\angle RBG=\angle GBP=45^\circ$ means $BG$ bisects $\angle ABP$ and $G$ is middle point of $\widehat{RP}$ not contains $B$, then $GP=GR$. $\square$
 
-$Claim_3:$ $\angle EAG=\angle GEA=45^\circ$.
+### Claim 3 $\angle EAG=\angle GEA=45^\circ$.
 
 Analogous with $Claim_1$ and $Claim_2$, discover $EDAG$ is cyclic and $G$ is the middle point of $\widehat{EA}$ not contains $D$, we obtain $GA=GE \Longrightarrow \angle EAG=\angle GEA= 45^\circ$ $\square$\
 
 ---
 
-$Claim_4:$ $GR=GK$.
+### Claim 4 $GR=GK$.
 
 By $Claim_1$, $Claim_2$ and $Claim_3$, we obtain $ARPE$ is a isoscele trapezoid, then $AR=EP \Longrightarrow AR=EP=AK \Longrightarrow AR=AK$ then $\triangle KAR$ is isosceles and $\angle AGK=90^\circ \Longrightarrow G$ is a middle point of $KR$ where $GR=GK$. $\square$
 
