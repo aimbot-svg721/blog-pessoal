@@ -583,3 +583,86 @@ html[data-post-view="grid"] .archive-category:hover {
   .cards .card { min-height: 16rem; }
   html[data-post-view="grid"] .archive-list { grid-template-columns: minmax(0, 1fr); }
 }
+
+
+/* Article sidebar: automatic table of contents and return-to-top link. */
+.post-sidebar {
+  margin: 0 0 var(--s-6);
+  padding: .85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+}
+.post-toc { margin: 0; padding: 0; border: 0; border-radius: 0; }
+.post-toc h2 {
+  margin: 0 0 .55rem;
+  color: var(--text-2);
+  font: 700 .68rem/1.3 var(--font-sans);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+#TableOfContents ul { list-style: none; margin: 0; padding: 0; }
+#TableOfContents ul ul { padding-left: .8rem; }
+#TableOfContents li { margin: 0; }
+#TableOfContents a {
+  display: block;
+  padding: .2rem 0;
+  color: var(--text-2);
+  font: .72rem/1.4 var(--font-sans);
+  text-decoration: none;
+}
+#TableOfContents a:hover { color: var(--accent); }
+.back-to-top {
+  display: inline-block;
+  margin-top: .65rem;
+  padding-top: .55rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-2);
+  font: 600 .7rem/1.4 var(--font-sans);
+  text-decoration: none;
+}
+.back-to-top:hover { color: var(--accent); }
+.prose h2, .prose h3 { scroll-margin-top: 5rem; }
+
+.post-next {
+  grid-column: 1;
+  margin-top: var(--s-6);
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+}
+.post-next-label {
+  margin: 0 0 .35rem;
+  color: var(--text-2);
+  font: 700 .66rem/1.3 var(--font-sans);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.post-next > a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text);
+  font: 600 1rem/1.35 var(--font-serif);
+  text-decoration: none;
+}
+.post-next > a:hover { color: var(--accent); }
+
+@media (min-width: 1024px) {
+  .post-header, .post-body, .post-footer, .post-next { grid-column: 1; }
+  .post-sidebar {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    align-self: start;
+    position: sticky;
+    top: 4.5rem;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    border: 0;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+  }
+}
