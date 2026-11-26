@@ -15,10 +15,10 @@
     {{ if $isPost }}
       <aside class="post-sidebar" aria-label="{{ i18n "toc" }}">
         {{ if $showTOC }}
-          <nav class="post-toc" aria-labelledby="post-toc-title">
+          <div class="post-toc">
             <h2 id="post-toc-title">{{ i18n "toc" }}</h2>
             {{ $toc }}
-          </nav>
+          </div>
         {{ end }}
         <a class="back-to-top" href="#post-top">{{ i18n "back_to_top" }} ↑</a>
       </aside>
