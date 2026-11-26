@@ -35,6 +35,14 @@ jobs:
           hugo version
       - name: Build
         run: hugo --gc --minify
+      - name: Verify generated pages
+        run: |
+          test -f public/pt/busca/index.html
+          test -f public/en/search/index.html
+          test -f public/pt/tags/imo/index.html
+          grep -q 'id="search-index"' public/pt/busca/index.html
+          grep -q 'id="search-index"' public/en/search/index.html
+          grep -q '"topics"' public/pt/busca/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
