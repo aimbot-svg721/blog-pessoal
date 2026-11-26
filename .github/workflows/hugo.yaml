@@ -46,6 +46,8 @@ jobs:
           test -f public/en/search/index.html
           test -f public/pt/tags/imo/index.html
           test -f public/pt/tags/cone-sul/index.html
+          test -f public/en/tags/imo/index.html
+          test -f public/en/tags/cone-sul/index.html
           python - <<'PY'
           import json
           import re
@@ -61,7 +63,10 @@ jobs:
               assert match, f"Search index missing from {path}"
               entries = json.loads(match.group(1))
               assert entries, f"Search index is empty in {path}"
+              assert all(entry.get("title") and entry.get("url") for entry in entries), f"Untitled or unlinked entry in {path}"
               assert all(isinstance(entry.get("topics"), list) for entry in entries), f"Topic links missing in {path}"
+              assert any(any(topic["label"] == "IMO" for topic in entry["topics"]) for entry in entries), f"IMO tag missing in {path}"
+              assert any(any(topic["label"] == "Cone-Sul" for topic in entry["topics"]) for entry in entries), f"Cone-Sul tag missing in {path}"
               print(f"Validated {path}: {len(entries)} indexed articles")
 
           portuguese = json.loads(
