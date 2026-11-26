@@ -45,6 +45,7 @@ jobs:
           test -f public/pt/busca/index.html
           test -f public/en/search/index.html
           test -f public/pt/tags/imo/index.html
+          test -f public/pt/tags/cone-sul/index.html
           python - <<'PY'
           import json
           import re
@@ -60,7 +61,7 @@ jobs:
               assert match, f"Search index missing from {path}"
               entries = json.loads(match.group(1))
               assert entries, f"Search index is empty in {path}"
-              assert all("topics" in entry for entry in entries), f"Topics missing in {path}"
+              assert all(isinstance(entry.get("topics"), list) for entry in entries), f"Topic links missing in {path}"
               print(f"Validated {path}: {len(entries)} indexed articles")
 
           portuguese = json.loads(
@@ -70,8 +71,13 @@ jobs:
                   re.DOTALL,
               ).group(1)
           )
-          assert any("IMO" in entry["topics"] for entry in portuguese), "IMO tag missing from Portuguese search index"
+          assert any(any(topic["label"] == "IMO" for topic in entry["topics"]) for entry in portuguese), "IMO tag missing from Portuguese search index"
+          assert any(any(topic["label"] == "Cone-Sul" for topic in entry["topics"]) for entry in portuguese), "Cone-Sul tag missing from Portuguese search index"
           PY
+      - name: Test search logic
+        run: |
+          node --check assets/js/search.js
+          node --test tests/search.test.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
