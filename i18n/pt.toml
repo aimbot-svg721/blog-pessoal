@@ -123,3 +123,10 @@ other = "resultados encontrados"
 other = "A busca precisa de JavaScript habilitado."
 [related_posts]
 other = "Textos relacionados"
+
+[search_error]
+other = "Não foi possível carregar o índice de pesquisa. Atualize a página e tente novamente."
+[search_result_one]
+other = "resultado encontrado"
+[search_result_many]
+other = "resultados encontrados"
