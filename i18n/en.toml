@@ -123,3 +123,10 @@ other = "results found"
 other = "Search requires JavaScript to be enabled."
 [related_posts]
 other = "Related articles"
+
+[search_error]
+other = "The search index could not be loaded. Refresh the page and try again."
+[search_result_one]
+other = "result found"
+[search_result_many]
+other = "results found"
