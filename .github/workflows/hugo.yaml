@@ -52,12 +52,8 @@ jobs:
 
           for path in ("public/pt/busca/index.html", "public/en/search/index.html"):
               html = Path(path).read_text(encoding="utf-8")
-              marker = html.find("search-index")
-              print(f"Search marker in {path}: {marker}")
-              if marker >= 0:
-                  print(html[max(0, marker - 120):marker + 700])
               match = re.search(
-                  r'<script\\b(?=[^>]*id="search-index")(?=[^>]*type="application/json")[^>]*>(.*?)</script>',
+                  r'<script[^>]*id=search-index[^>]*>(.*?)</script>',
                   html,
                   re.DOTALL,
               )
@@ -69,7 +65,7 @@ jobs:
 
           portuguese = json.loads(
               re.search(
-                  r'<script type="application/json" id="search-index">(.*?)</script>',
+                  r'<script[^>]*id=search-index[^>]*>(.*?)</script>',
                   Path("public/pt/busca/index.html").read_text(encoding="utf-8"),
                   re.DOTALL,
               ).group(1)
