@@ -45,7 +45,7 @@
     </section>
     <noscript><p class="empty-state">{{ i18n "search_no_script" }}</p></noscript>
   </div>
-  <script type="application/json" id="search-index">{{ $entries | jsonify }}</script>
+  <script type="application/json" id="search-index">{{ $entries | jsonify | safeJS }}</script>
   <script>
     (function () {
       var form = document.getElementById("site-search-form");
