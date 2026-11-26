@@ -25,7 +25,7 @@ const entries = [
   },
   {
     title: "Uma nota sobre geometria",
-    description: "Uma reflexão sobre matemática.",
+    description: "Uma reflexão geométrica.",
     topics: [{ label: "Geometria", type: "category", url: "/pt/geometria/" }],
     content: "Uma nota curta.",
     date: "2026-11-10"
