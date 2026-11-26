@@ -5,10 +5,18 @@
     {{- if not $description -}}
       {{- $description = .Summary | plainify | htmlUnescape -}}
     {{- end -}}
+    {{- $topics := slice -}}
+    {{- range .GetTerms "categories" -}}
+      {{- $topics = $topics | append .LinkTitle -}}
+    {{- end -}}
+    {{- range .GetTerms "tags" -}}
+      {{- $topics = $topics | append .LinkTitle -}}
+    {{- end -}}
     {{- $entries = $entries | append (dict
       "title" .LinkTitle
       "url" .RelPermalink
       "description" $description
+      "topics" (delimit $topics " ")
       "content" (.Plain | plainify | htmlUnescape)
       "date" (.Date.Format "2006-01-02")
     ) -}}
@@ -105,6 +113,7 @@
           var searchable = normalize([
             entry.title,
             entry.description,
+            entry.topics,
             entry.content
           ].join(" "));
           return terms.every(function (term) {
