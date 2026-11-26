@@ -5,6 +5,7 @@ draft = false
 translationKey = "meu-primeiro-artigo"
 description = "What I want for this blog."
 categories = ["off-topic"]
+tags = ["Cone-Sul"]
 +++
 
 In November 9, 2026 I begin to make my blog. My objective for this is talk about mathematics olimpics, for now, my knowledge is very about this. I am in second year of the high school, the college that 
