@@ -11,7 +11,7 @@ Em 9 de novembro de 2026, começo a construir meu blog. Meu objetivo com ele é 
 
 <!--more-->
 
-## Primeira seção
+## Geometria Olímpica.
 
 Este é um tipo de problema que desperta interesse e curiosidade, dando vontade de pesquisar mais, estudar mais e gostar ainda mais de matemática.
 
