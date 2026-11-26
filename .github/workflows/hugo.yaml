@@ -37,6 +37,11 @@ jobs:
         run: hugo --gc --minify
       - name: Verify generated pages
         run: |
+          echo "Generated search and tag pages:"
+          find public -type f | sort | grep -E '(busca|search|tags|imo)' || true
+          for path in public/pt/busca/index.html public/en/search/index.html public/pt/tags/imo/index.html; do
+            if [ -f "$path" ]; then echo "FOUND $path"; else echo "MISSING $path"; fi
+          done
           test -f public/pt/busca/index.html
           test -f public/en/search/index.html
           test -f public/pt/tags/imo/index.html
