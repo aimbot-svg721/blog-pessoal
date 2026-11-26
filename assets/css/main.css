@@ -668,28 +668,63 @@ html[data-post-view="grid"] .archive-category:hover {
 }
 
 
-/* Give the article layout a wider canvas so the TOC sits at the far right. */
-@media (min-width: 1024px) and (max-width: 1199px) {
-  .post { grid-template-columns: minmax(0, 1fr); }
-  .post-header, .post-body, .post-footer, .post-next { grid-column: 1; }
+/* Keep the article centered; pin the independently scrollable TOC to the viewport edge. */
+@media (min-width: 1200px) {
+  .shell:has(> .post) {
+    width: min(100% - 3rem, var(--measure));
+  }
+  .post {
+    display: block;
+    width: 100%;
+  }
+  .post-header,
+  .post-body,
+  .post-footer,
+  .post-next {
+    width: 100%;
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
   .post-sidebar {
-    grid-column: 1;
-    grid-row: auto;
+    position: fixed;
+    z-index: 5;
+    top: 5rem;
+    right: 1.5rem;
+    width: var(--toc);
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding: 0 0 0 1rem;
+    border: 0;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+  }
+}
+
+/* On narrower screens, keep the TOC in normal document flow. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .shell:has(> .post) {
+    width: min(100% - 3rem, var(--measure));
+  }
+  .post { display: block; }
+  .post-header,
+  .post-body,
+  .post-footer,
+  .post-next {
+    width: 100%;
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+  .post-sidebar {
     position: static;
-    margin: 0 0 var(--s-6);
+    width: 100%;
+    max-width: var(--measure);
+    max-height: none;
+    overflow: visible;
+    margin: 0 auto var(--s-6);
     padding: .85rem 1rem;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-  }
-}
-@media (min-width: 1200px) {
-  .shell:has(> .post) {
-    width: min(100% - 3rem, 1400px);
-  }
-  .post {
-    width: 100%;
-    grid-template-columns: minmax(0, var(--measure)) var(--toc);
-    justify-content: space-between;
-    column-gap: var(--gap);
   }
 }
