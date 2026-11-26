@@ -22,6 +22,27 @@
   {{ if .Page.Store.Get "hasMath" }}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+    {{ if and .IsPage (eq .Section "posts") }}
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var toc = document.getElementById("TableOfContents");
+          if (!toc || typeof renderMathInElement !== "function") return;
+
+          renderMathInElement(toc, {
+            delimiters: [
+              { left: "$", right: "$", display: true },
+              { left: "\\[", right: "\\]", display: true },
+              { left: "\\(", right: "\\)", display: false },
+              { left: "$", right: "$", display: false }
+            ],
+            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+            throwOnError: false
+          });
+        });
+      </script>
+    {{ end }}
   {{ end }}
 </head>
 <body>
