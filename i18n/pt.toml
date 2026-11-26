@@ -102,3 +102,24 @@ other = "Visualização dos artigos"
 other = "Lista"
 [view_grid]
 other = "Grade"
+
+[search]
+other = "Buscar"
+[search_path]
+other = "busca/"
+[search_label]
+other = "Pesquisar artigos"
+[search_placeholder]
+other = "Título, assunto ou expressão matemática..."
+[search_prompt]
+other = "Digite algo para encontrar artigos."
+[search_no_results]
+other = "Nenhum artigo encontrado."
+[search_results_heading]
+other = "Resultados da busca"
+[search_results_count]
+other = "resultados encontrados"
+[search_no_script]
+other = "A busca precisa de JavaScript habilitado."
+[related_posts]
+other = "Textos relacionados"
