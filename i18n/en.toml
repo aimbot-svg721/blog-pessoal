@@ -25,7 +25,11 @@ other = "Categories"
 [theme_toggle]
 other = "Toggle light/dark theme"
 [toc]
-other = "In this post"
+other = "On this page"
+[back_to_top]
+other = "Back to top"
+[next_post]
+other = "Next post"
 [date_fmt]
 other = "%[2]s %[1]d, %[3]d"
 [post_count]
