@@ -12,7 +12,7 @@
   {{- end -}}
   {{- $recent := slice -}}
   {{- range $posts -}}
-    {{- if or site.Params.home_featured_in_list (not (in $featuredPermalinks .RelPermalink)) -}}
+    {{- if or site.Params.home_featured_in_list (eq (len $manualFeatured) 0) (not (in $featuredPermalinks .RelPermalink)) -}}
       {{- $recent = $recent | append . -}}
     {{- end -}}
   {{- end -}}
