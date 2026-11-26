@@ -37,7 +37,9 @@
       {{- range first 1 (sort $newerPosts "Date" "asc") }}
         <nav class="post-next" aria-label="{{ i18n "next_post" }}">
           <p class="post-next-label">{{ i18n "next_post" }}</p>
-          <a href="{{ .RelPermalink }}">{{ .LinkTitle }} <span aria-hidden="true">→</span></a>
+          <ul class="cards post-next-cards">
+            {{ partial "card.html" . }}
+          </ul>
         </nav>
       {{- end }}
     {{ end }}
