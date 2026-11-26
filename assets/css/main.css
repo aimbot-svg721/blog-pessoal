@@ -779,17 +779,19 @@ html[data-post-view="grid"] .archive-category:hover {
   -webkit-line-clamp: unset;
 }
 .post-related {
-  width: min(var(--measure), calc(100vw - var(--toc) - var(--toc) - 4rem));
+  width: 100%;
   max-width: var(--measure);
   margin: var(--s-7) auto 0;
 }
 .post-related-cards {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-@media (max-width: 760px) {
+@media (min-width: 1024px) {
   .post-related {
-    width: 100%;
+    width: min(var(--measure), calc(100vw - var(--toc) - var(--toc) - 4rem));
   }
+}
+@media (max-width: 760px) {
   .post-related-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
