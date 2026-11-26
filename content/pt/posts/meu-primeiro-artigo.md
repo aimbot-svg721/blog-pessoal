@@ -5,6 +5,7 @@ draft = false
 translationKey = "meu-primeiro-artigo"
 description = "O que quero para este blog."
 categories = ["off-topic"]
+tags = ["Cone-Sul"]
 +++
 
 Em 9 de novembro de 2026, começo a construir meu blog. Meu objetivo com ele é falar sobre olimpíadas de matemática. Por enquanto, ainda sei muito pouco sobre esse universo. Estou no segundo ano do ensino médio, e o curso universitário que me interessa é Matemática; por isso, no futuro, pretendo criar a seção "Cálculo" rsrs.

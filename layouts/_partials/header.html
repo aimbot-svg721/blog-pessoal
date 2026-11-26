@@ -11,7 +11,6 @@
 
     <nav class="primary-nav" aria-label="{{ i18n "main_navigation" }}">
       <a href="{{ site.Home.RelPermalink }}" {{ if $isBlog }}aria-current="page"{{ end }}>{{ i18n "blog" }}</a>
-      <a href="{{ i18n "search_path" | relLangURL }}" {{ if eq .Layout "search" }}aria-current="page"{{ end }}>{{ i18n "search" }}</a>
       {{- range site.Params.nav_categories -}}
         {{- $href := printf "%s/" .slug | relLangURL -}}
         <a href="{{ $href }}" {{ if eq $activeCategory .slug }}aria-current="page"{{ end }}>{{ .name }}</a>
@@ -20,6 +19,9 @@
     </nav>
 
     <div class="nav-actions">
+      <a class="icon-btn" href="{{ i18n "search_path" | relLangURL }}" aria-label="{{ i18n "search" }}" title="{{ i18n "search" }}" {{ if eq .Layout "search" }}aria-current="page"{{ end }}>
+        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+      </a>
       <button id="theme-toggle" class="icon-btn" type="button" aria-label="{{ i18n "theme_toggle" }}" aria-pressed="false">
         <svg class="icon icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8z"/></svg>
         <svg class="icon icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>

@@ -6,6 +6,7 @@ draft = false
 translationKey = "numero-cem-testes"
 description = "A conjecture survives a hundred tests, until one carefully chosen value reveals where it breaks."
 categories = ["number-theory"]
+tags = ["IMO"]
 +++
 
 It's 11 p.m. and there's a number in my notebook that's lying to me.
