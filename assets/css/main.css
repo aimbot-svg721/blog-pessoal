@@ -666,3 +666,30 @@ html[data-post-view="grid"] .archive-category:hover {
     border-radius: 0;
   }
 }
+
+
+/* Give the article layout a wider canvas so the TOC sits at the far right. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .post { grid-template-columns: minmax(0, 1fr); }
+  .post-header, .post-body, .post-footer, .post-next { grid-column: 1; }
+  .post-sidebar {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    margin: 0 0 var(--s-6);
+    padding: .85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+}
+@media (min-width: 1200px) {
+  .shell:has(> .post) {
+    width: min(100% - 3rem, 1400px);
+  }
+  .post {
+    width: 100%;
+    grid-template-columns: minmax(0, var(--measure)) var(--toc);
+    justify-content: space-between;
+    column-gap: var(--gap);
+  }
+}
