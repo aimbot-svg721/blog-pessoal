@@ -16,7 +16,7 @@ Em 9 de novembro de 2026, começo a construir meu blog. Meu objetivo com ele é 
 
 Este é um tipo de problema que desperta interesse e curiosidade, dando vontade de pesquisar mais, estudar mais e gostar ainda mais de matemática.
 
-**Problema (Cono Sur 2025/P1).** Dado um quadrado $ABCD$, seja $P$ um ponto do segmento $BC$, e seja $G$ o ponto de interseção de $AP$ com a diagonal $DB$. A reta perpendicular ao segmento $AP$ que passa por $G$ intersecta o lado $CD$ no ponto $E$. Seja $K$ um ponto do segmento $GE$ tal que $AK = PE$. Seja $Q$ o ponto de interseção da diagonal $AC$ com o segmento $KP$. Prove que os pontos $E, K, Q$ e $C$ são concíclicos.
+> **Problema (Cono Sur 2025/P1).** Dado um quadrado $ABCD$, seja $P$ um ponto do segmento $BC$, e seja $G$ o ponto de interseção de $AP$ com a diagonal $DB$. A reta perpendicular ao segmento $AP$ que passa por $G$ intersecta o lado $CD$ no ponto $E$. Seja $K$ um ponto do segmento $GE$ tal que $AK = PE$. Seja $Q$ o ponto de interseção da diagonal $AC$ com o segmento $KP$. Prove que os pontos $E, K, Q$ e $C$ são concíclicos.
 
 *Solução.*
 
