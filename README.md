@@ -41,10 +41,12 @@ draft = true
 translationKey = "meu-artigo"
 categories = ["teoria-dos-numeros"]
 description = "Uma breve apresentação do texto."
+# Opcional: marque true para escolher este artigo entre os destaques da página inicial.
+featured = true
 +++
 ```
 
-As categorias disponíveis estão em content/<idioma>/categories/. Use os identificadores das pastas, não os nomes exibidos.
+As categorias disponíveis estão em content/<idioma>/categories/. Use os identificadores das pastas, não os nomes exibidos. Para selecionar manualmente um artigo entre os destaques da página inicial, adicione `featured = true` ao front matter. Se nenhum artigo estiver marcado, o site usa os mais recentes. Por padrão, os artigos destacados não se repetem na lista de recentes.
 
 ## Matemática
 
