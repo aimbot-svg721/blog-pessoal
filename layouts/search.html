@@ -1,0 +1,155 @@
+{{ define "main" }}
+  {{- $entries := slice -}}
+  {{- range where site.RegularPages "Section" "posts" -}}
+    {{- $description := .Description -}}
+    {{- if not $description -}}
+      {{- $description = .Summary | plainify | htmlUnescape -}}
+    {{- end -}}
+    {{- $topics := slice -}}
+    {{- range .GetTerms "categories" -}}
+      {{- $topics = $topics | append .LinkTitle -}}
+    {{- end -}}
+    {{- range .GetTerms "tags" -}}
+      {{- $topics = $topics | append .LinkTitle -}}
+    {{- end -}}
+    {{- $entries = $entries | append (dict
+      "title" .LinkTitle
+      "url" .RelPermalink
+      "description" $description
+      "topics" (delimit $topics " ")
+      "content" (.Plain | plainify | htmlUnescape)
+      "date" (.Date.Format "2006-01-02")
+    ) -}}
+  {{- end -}}
+  <div class="search-page col">
+    <header class="archive-header">
+      <h1>{{ .Title }}</h1>
+      <div class="archive-intro prose">{{ .Content }}</div>
+    </header>
+    <form class="search-form" id="site-search-form" role="search">
+      <label class="search-label" for="site-search-input">{{ i18n "search_label" }}</label>
+      <input
+        class="search-input"
+        id="site-search-input"
+        type="search"
+        name="q"
+        placeholder="{{ i18n "search_placeholder" }}"
+        autocomplete="off"
+        spellcheck="false"
+      >
+    </form>
+    <p class="search-status" id="search-status" aria-live="polite">{{ i18n "search_prompt" }}</p>
+    <section aria-labelledby="search-results-heading">
+      <h2 id="search-results-heading" class="sr-only">{{ i18n "search_results_heading" }}</h2>
+      <ul class="cards search-results" id="search-results"></ul>
+    </section>
+    <noscript><p class="empty-state">{{ i18n "search_no_script" }}</p></noscript>
+  </div>
+  <script type="application/json" id="search-index">{{ $entries | jsonify | safeJS }}</script>
+  <script>
+    (function () {
+      var form = document.getElementById("site-search-form");
+      var input = document.getElementById("site-search-input");
+      var list = document.getElementById("search-results");
+      var status = document.getElementById("search-status");
+      var indexNode = document.getElementById("search-index");
+      if (!form || !input || !list || !status || !indexNode) return;
+
+      var entries;
+      try {
+        entries = JSON.parse(indexNode.textContent || "[]");
+      } catch (_) {
+        status.textContent = "{{ i18n "search_no_results" }}";
+        return;
+      }
+
+      function normalize(value) {
+        return String(value || "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLocaleLowerCase();
+      }
+
+      function makeResult(entry) {
+        var item = document.createElement("li");
+        item.className = "card";
+
+        var meta = document.createElement("p");
+        meta.className = "card-meta";
+        var time = document.createElement("time");
+        time.dateTime = entry.date;
+        time.textContent = entry.date;
+        meta.appendChild(time);
+
+        var heading = document.createElement("h3");
+        heading.className = "card-title";
+        var link = document.createElement("a");
+        link.href = entry.url;
+        link.textContent = entry.title;
+        heading.appendChild(link);
+
+        item.appendChild(meta);
+        item.appendChild(heading);
+
+        if (entry.description) {
+          var description = document.createElement("p");
+          description.className = "card-desc";
+          description.textContent = entry.description;
+          item.appendChild(description);
+        }
+        return item;
+      }
+
+      function render() {
+        var query = normalize(input.value.trim());
+        list.replaceChildren();
+        if (!query) {
+          status.textContent = "{{ i18n "search_prompt" }}";
+          return;
+        }
+
+        var terms = query.split(/\s+/).filter(Boolean);
+        var results = entries.filter(function (entry) {
+          var searchable = normalize([
+            entry.title,
+            entry.description,
+            entry.topics,
+            entry.content
+          ].join(" "));
+          return terms.every(function (term) {
+            return searchable.includes(term);
+          });
+        });
+
+        results.sort(function (a, b) {
+          var aTitle = normalize(a.title).includes(query) ? 1 : 0;
+          var bTitle = normalize(b.title).includes(query) ? 1 : 0;
+          if (aTitle !== bTitle) return bTitle - aTitle;
+          return b.date.localeCompare(a.date);
+        });
+
+        if (!results.length) {
+          status.textContent = "{{ i18n "search_no_results" }}";
+          return;
+        }
+
+        status.textContent = results.length + " {{ i18n "search_results_count" }}";
+        results.slice(0, 30).forEach(function (entry) {
+          list.appendChild(makeResult(entry));
+        });
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        render();
+      });
+      input.addEventListener("input", render);
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.has("q")) {
+        input.value = params.get("q");
+        render();
+      }
+    })();
+  </script>
+{{ end }}

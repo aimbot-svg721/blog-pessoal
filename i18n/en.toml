@@ -102,3 +102,24 @@ other = "Post view"
 other = "List"
 [view_grid]
 other = "Grid"
+
+[search]
+other = "Search"
+[search_path]
+other = "search/"
+[search_label]
+other = "Search articles"
+[search_placeholder]
+other = "Title, topic, or mathematical expression..."
+[search_prompt]
+other = "Type to find articles."
+[search_no_results]
+other = "No articles found."
+[search_results_heading]
+other = "Search results"
+[search_results_count]
+other = "results found"
+[search_no_script]
+other = "Search requires JavaScript to be enabled."
+[related_posts]
+other = "Related articles"

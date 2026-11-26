@@ -7,12 +7,14 @@ disableKinds = ["taxonomy", "section", "rss"]
 
 [taxonomies]
   category = "categories"
+  tag = "tags"
 
 [permalinks]
   [permalinks.page]
     posts = "/:slug/"
   [permalinks.term]
     categories = "/:slug/"
+    tags = "/tags/:slug/"
 
 [outputs]
   term = ["html"]

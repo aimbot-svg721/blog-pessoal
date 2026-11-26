@@ -1,7 +1,21 @@
 {{ define "main" }}
   {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $n := site.Params.home_featured | default 3 -}}
+  {{- $manualFeatured := where $posts "Params.featured" true -}}
   {{- $featured := first $n $posts -}}
+  {{- if gt (len $manualFeatured) 0 -}}
+    {{- $featured = first $n $manualFeatured -}}
+  {{- end -}}
+  {{- $featuredPermalinks := slice -}}
+  {{- range $featured -}}
+    {{- $featuredPermalinks = $featuredPermalinks | append .RelPermalink -}}
+  {{- end -}}
+  {{- $recent := slice -}}
+  {{- range $posts -}}
+    {{- if or site.Params.home_featured_in_list (eq (len $manualFeatured) 0) (not (in $featuredPermalinks .RelPermalink)) -}}
+      {{- $recent = $recent | append . -}}
+    {{- end -}}
+  {{- end -}}
   <div class="home col">
     <h1 class="sr-only">{{ site.Title }}</h1>
 
@@ -14,8 +28,10 @@
       </section>
     {{ end }}
 
-    <section class="recent-section" aria-labelledby="recent-title">
-      {{ partial "post-groups.html" (dict "pages" $posts "heading" (i18n "recent")) }}
-    </section>
+    {{ if gt (len $recent) 0 }}
+      <section class="recent-section" aria-labelledby="recent-title">
+        {{ partial "post-groups.html" (dict "pages" $recent "heading" (i18n "recent")) }}
+      </section>
+    {{ end }}
   </div>
 {{ end }}

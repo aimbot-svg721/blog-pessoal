@@ -1,6 +1,7 @@
 {{ define "main" }}
   {{- $isPost := and .IsPage (eq .Section "posts") -}}
   {{- $terms := .GetTerms "categories" -}}
+  {{- $tags := .GetTerms "tags" -}}
   {{- $toc := .TableOfContents -}}
   {{- $showTOC := gt (len (findRE "<li>" $toc)) 0 -}}
   <article class="post" id="post-top">
@@ -28,9 +29,40 @@
 
     {{ if $isPost }}
       <footer class="post-footer">
-        {{ with $terms }}<a href="{{ (index . 0).RelPermalink }}">{{ (index . 0).LinkTitle }}</a> · {{ end }}
+        {{ with $terms }}<a href="{{ (index . 0).RelPermalink }}">{{ (index . 0).LinkTitle }}</a>{{ end }}
+        {{ range $i, $tag := $tags }}{{ if or (gt $i 0) $terms }} · {{ end }}<a href="{{ $tag.RelPermalink }}">#{{ $tag.LinkTitle }}</a>{{ end }}
+        {{ if or $terms $tags }} · {{ end }}
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>
       </footer>
+
+      {{- $currentPost := . -}}
+      {{- $relatedPosts := slice -}}
+      {{- $relatedPermalinks := slice -}}
+      {{- range $terms -}}
+        {{- range .Pages -}}
+          {{- if and (ne .RelPermalink $currentPost.RelPermalink) (not (in $relatedPermalinks .RelPermalink)) -}}
+            {{- $relatedPosts = $relatedPosts | append . -}}
+            {{- $relatedPermalinks = $relatedPermalinks | append .RelPermalink -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- range $tags -}}
+        {{- range .Pages -}}
+          {{- if and (ne .RelPermalink $currentPost.RelPermalink) (not (in $relatedPermalinks .RelPermalink)) -}}
+            {{- $relatedPosts = $relatedPosts | append . -}}
+            {{- $relatedPermalinks = $relatedPermalinks | append .RelPermalink -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $relatedPosts = first 3 (sort $relatedPosts "Date" "desc") -}}
+      {{- with $relatedPosts }}
+        <section class="post-related" aria-labelledby="related-posts-title">
+          <h2 id="related-posts-title" class="post-next-label">{{ i18n "related_posts" }}</h2>
+          <ul class="cards post-related-cards">
+            {{ range . }}{{ partial "card.html" . }}{{ end }}
+          </ul>
+        </section>
+      {{- end }}
 
       {{- $newerPosts := where site.RegularPages "Section" "posts" -}}
       {{- $newerPosts = where $newerPosts "Date" "gt" .Date -}}
