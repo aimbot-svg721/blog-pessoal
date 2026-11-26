@@ -3,6 +3,11 @@
   <div class="archive-entry">
     <a class="archive-title" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
     {{ with .Description }}<p class="archive-desc">{{ . }}</p>{{ end }}
+    {{ with .GetTerms "tags" }}
+      <div class="archive-tags" aria-label="{{ i18n "topics" }}">
+        {{ range . }}<a class="archive-tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+      </div>
+    {{ end }}
   </div>
   {{ with .GetTerms "categories" }}
     <a class="archive-category" href="{{ (index . 0).RelPermalink }}">{{ (index . 0).LinkTitle }}</a>
