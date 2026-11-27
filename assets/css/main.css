@@ -1136,7 +1136,7 @@ a { text-decoration-skip-ink: auto; }
 /* The recent-section heading and post titles share the featured-title face
    and warm theme-aware color. */
 .recent-heading {
-  color: var(--home-title);
+  color: var(--accent);
   font-family: var(--font-serif);
   font-size: 1.75rem;
   font-weight: 600;
