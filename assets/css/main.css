@@ -1097,13 +1097,25 @@ a { text-decoration-skip-ink: auto; }
   min-height: 16rem;
   aspect-ratio: auto;
 }
-.card-title a,
-.item-title {
-  color: var(--accent);
+/* Homepage post titles follow AkitaOnRails' warm accent palette:
+   terracotta in light mode and amber in dark mode. */
+:root {
+  --home-title: #a63a1e;
+  --home-title-hover: #7f2a12;
 }
-.card-title a:hover,
+@supports (color: light-dark(white, black)) {
+  :root {
+    --home-title: light-dark(#a63a1e, #e2a05a);
+    --home-title-hover: light-dark(#7f2a12, #f2bd82);
+  }
+}
+.cards .card-title a,
+.item-title {
+  color: var(--home-title);
+}
+.cards .card-title a:hover,
 .item-title:hover {
-  color: var(--link-hover);
+  color: var(--home-title-hover);
 }
 .recent-heading {
   color: var(--accent);
