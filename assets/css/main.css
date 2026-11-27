@@ -1126,3 +1126,110 @@ a { text-decoration-skip-ink: auto; }
   line-height: 1.2;
   text-transform: none;
 }
+
+/* Homepage alignment with AkitaOnRails: featured cards and connected list rows. */
+.cards .card {
+  min-height: 15rem;
+  padding: 1.1rem;
+}
+
+/* The recent-section heading and post titles share the featured-title face
+   and warm theme-aware color. */
+.recent-heading {
+  color: var(--home-title);
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.12;
+  text-transform: none;
+}
+.recent-section .archive-title {
+  color: var(--home-title);
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: none;
+}
+.recent-section .archive-title:hover {
+  color: var(--home-title-hover);
+  text-decoration: none;
+}
+
+/* List view: one shared frame, no gaps between rows, like Akita's index. */
+:root:not([data-post-view="grid"]) .recent-section .archive-list {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+:root:not([data-post-view="grid"]) .recent-section .archive-list li {
+  grid-template-columns: 6.5rem minmax(0, 1fr) minmax(10rem, 17rem);
+  align-items: start;
+  gap: 1rem;
+  padding: .85rem 1rem;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+}
+:root:not([data-post-view="grid"]) .recent-section .archive-list li:last-child {
+  border-bottom: 0;
+}
+:root:not([data-post-view="grid"]) .recent-section .archive-list li:hover {
+  background: var(--bg);
+}
+:root:not([data-post-view="grid"]) .recent-section .archive-list time {
+  padding-top: .25rem;
+  font: 600 .68rem/1.2 var(--font-mono);
+}
+:root:not([data-post-view="grid"]) .recent-section .archive-entry {
+  min-width: 0;
+}
+:root:not([data-post-view="grid"]) .recent-section .archive-desc {
+  display: -webkit-box;
+  margin: .28rem 0 0;
+  overflow: hidden;
+  font: .77rem/1.4 var(--font-sans);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+:root:not([data-post-view="grid"]) .recent-section .archive-category {
+  justify-self: end;
+  align-self: start;
+  padding-top: .15rem;
+  font: .68rem/1.3 var(--font-mono);
+  text-align: right;
+  white-space: normal;
+}
+
+@media (max-width: 48rem) {
+  :root:not([data-post-view="grid"]) .recent-section .archive-list li {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: .7rem;
+  }
+  :root:not([data-post-view="grid"]) .recent-section .archive-entry {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  :root:not([data-post-view="grid"]) .recent-section .archive-category {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    text-align: left;
+  }
+}
+@media (max-width: 28rem) {
+  :root:not([data-post-view="grid"]) .recent-section .archive-list li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .35rem;
+  }
+  :root:not([data-post-view="grid"]) .recent-section .archive-list time,
+  :root:not([data-post-view="grid"]) .recent-section .archive-entry,
+  :root:not([data-post-view="grid"]) .recent-section .archive-category {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
