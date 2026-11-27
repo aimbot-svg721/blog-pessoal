@@ -1086,3 +1086,31 @@ a { text-decoration-skip-ink: auto; }
   .post-title { font-size: clamp(2rem, 11vw, 2.7rem); }
   .post-body.prose { font-size: 1.08rem; }
 }
+
+/* Small homepage refinements: equal featured cards and editorial headings. */
+.cards {
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
+.cards > .card {
+  height: 100%;
+  min-height: 16rem;
+  aspect-ratio: auto;
+}
+.card-title a,
+.item-title {
+  color: var(--accent);
+}
+.card-title a:hover,
+.item-title:hover {
+  color: var(--link-hover);
+}
+.recent-heading {
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: none;
+}
