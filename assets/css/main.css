@@ -855,3 +855,234 @@ html[data-post-view="grid"] .archive-category:hover {
     gap: .4rem; padding: .9rem;
   }
 }
+
+
+/* ---------------------------------------------------------
+   Editorial typography and palette — inspired by AkitaOnRails
+   Keep the GuiOnMaths layout; align its reading experience.
+   --------------------------------------------------------- */
+:root {
+  --bg: #fbf9f4;
+  --surface: #ffffff;
+  --surface-muted: #f5f2eb;
+  --text: #1c211e;
+  --text-2: #525b54;
+  --border: #e2ddd3;
+  --border-strong: #d6cfc2;
+  --accent: #1d4836;
+  --accent-strong: #123829;
+  --link-hover: #9c3826;
+  --date-accent: #9c3826;
+  --brass: #8c7847;
+  --nav-bg: rgb(251 249 244 / .94);
+  --shadow: rgb(0 0 0 / .10);
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+@supports (color: light-dark(white, black)) {
+  :root {
+    --bg: light-dark(#fbf9f4, #121312);
+    --surface: light-dark(#ffffff, #1e201e);
+    --surface-muted: light-dark(#f5f2eb, #191b19);
+    --text: light-dark(#1c211e, #f2efe9);
+    --text-2: light-dark(#525b54, #aaa69d);
+    --border: light-dark(#e2ddd3, #30332f);
+    --border-strong: light-dark(#d6cfc2, #41453f);
+    --accent: light-dark(#1d4836, #d8e9df);
+    --accent-strong: light-dark(#123829, #ffffff);
+    --link-hover: light-dark(#9c3826, #cf745b);
+    --date-accent: light-dark(#9c3826, #cf745b);
+    --brass: light-dark(#8c7847, #c49e5d);
+    --nav-bg: light-dark(rgb(251 249 244 / .94), rgb(18 19 18 / .94));
+    --shadow: light-dark(rgb(0 0 0 / .10), rgb(0 0 0 / .45));
+  }
+}
+
+/* Akita's page uses a 16px root; the article column then scales to ~17–19px. */
+html { font-size: 16px; }
+@media (max-width: 600px) { html { font-size: 16px; } }
+
+body {
+  color: var(--text);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+main.shell { line-height: 1.5; }
+
+/* Reading typography: Newsreader is the defining face of Akita's articles. */
+.post-body.prose {
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: clamp(1.08rem, 2vw, 1.2rem);
+  line-height: 1.75;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  hyphens: auto;
+}
+.post-body.prose :where(p, li) { text-wrap: pretty; }
+.post-title {
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+.post-cat {
+  color: var(--accent);
+  font: 600 .68rem/1.3 var(--font-mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.post-date,
+.card-meta,
+.archive-list time,
+.post-footer time {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+}
+.post-date { color: var(--date-accent); }
+.post-body.prose :where(h2, h3, h4, h5, h6) {
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.16;
+}
+.post-body.prose h2 { margin-top: 2.8rem; font-size: 1.9rem; }
+.post-body.prose h3 { margin-top: 2.2rem; font-size: 1.5rem; }
+.post-body.prose h4 { margin-top: 1.8rem; font-size: 1.25rem; }
+
+/* Links: deep green text, brass underline, restrained terracotta hover. */
+.post-body.prose a {
+  color: var(--accent);
+  text-decoration-color: var(--brass);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-skip-ink: auto;
+}
+.post-body.prose a:hover { color: var(--link-hover); text-decoration-color: currentColor; }
+a { text-decoration-skip-ink: auto; }
+:focus-visible { outline-color: var(--brass); outline-offset: 3px; }
+
+.post-body.prose blockquote {
+  margin: 1.8rem 0;
+  border-left: 2px solid var(--accent);
+  background: transparent;
+  color: var(--text-2);
+  padding: .2rem 0 .2rem 1.25rem;
+  font-style: italic;
+}
+.post-body.prose :where(img, video) {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.post-body.prose :where(table, pre) { max-width: 100%; overflow-x: auto; }
+.post-body.prose table {
+  font: .82rem/1.4 var(--font-sans);
+  border-color: var(--border);
+}
+.post-body.prose :where(th, td) { border-color: var(--border); }
+.post-body.prose :where(pre, code, kbd, samp) { hyphens: none; }
+.post-body.prose code {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface-muted);
+  padding: .12em .32em;
+  font-family: var(--font-mono);
+  font-size: .82em;
+}
+.post-body.prose pre {
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--surface-muted);
+  font: .84rem/1.6 var(--font-mono);
+}
+.post-body.prose pre code { border: 0; padding: 0; background: transparent; }
+.problem { border-color: var(--accent); }
+.solution { border-color: var(--brass); }
+
+/* Metadata and small navigation labels use the mono face, not rounded UI text. */
+.nav, .primary-nav, .lang, .post-sidebar, .post-footer, .site-footer {
+  font-family: var(--font-sans);
+}
+.post-toc h2,
+.group-title,
+.post-next-label,
+.archive-month > h3,
+.term-kicker {
+  font-family: var(--font-mono);
+  letter-spacing: .04em;
+}
+.post-toc h2 { color: var(--text-2); }
+#TableOfContents a { font-family: var(--font-sans); }
+.post-sidebar {
+  background: var(--bg);
+  border-color: var(--border);
+}
+.post-footer { border-color: var(--border); }
+.post-footer a { color: var(--accent); text-decoration-color: var(--brass); }
+.post-footer a:hover { color: var(--link-hover); }
+
+/* Small taxonomy chips: quiet, square-edged and consistent with Akita's tags. */
+.card-tag, .archive-tag, .search-topic {
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: .61rem;
+}
+.card-tag, .search-topic {
+  border-color: var(--border);
+  background: var(--surface-muted);
+  color: var(--text-2);
+}
+.card-tag:hover, .search-topic:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.archive-tag:hover { color: var(--link-hover); }
+.card-category, .archive-category { color: var(--accent); }
+
+/* The warm paper palette also applies to cards, archive and search surfaces. */
+.card, .cards .card, .search-result, .archive-list li {
+  border-color: var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+}
+.card:hover, .cards .card:hover, .search-result:hover, .archive-list li:hover {
+  border-color: var(--accent);
+  box-shadow: 2px 2px 0 var(--accent);
+}
+.card-title a:hover, .archive-title:hover, .item-title:hover,
+.search-result-title a:hover, .prose a:hover {
+  color: var(--link-hover);
+}
+.card-desc, .archive-desc, .search-result-description { color: var(--text-2); }
+.group-title { color: var(--accent); border-color: var(--border); }
+.post-title, .term-title, .archive-header h1 { color: var(--text); }
+.site-title { color: var(--accent); font-family: var(--font-serif); }
+.site-title:hover { color: var(--link-hover); }
+.primary-nav a {
+  border-radius: 2px;
+  border-color: transparent;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 500;
+}
+.primary-nav a:hover,
+.primary-nav a[aria-current="page"] {
+  color: var(--accent);
+  border-color: var(--border);
+  background: var(--surface-muted);
+}
+.icon-btn:hover { color: var(--accent); background: var(--surface-muted); }
+
+@media (max-width: 600px) {
+  .post-title { font-size: clamp(2rem, 11vw, 2.7rem); }
+  .post-body.prose { font-size: 1.08rem; }
+}
